@@ -40,7 +40,6 @@ public class Car {
     private Color color;
 
     @OneToMany(mappedBy = "car")
-    @JsonIgnore
     private List<Rental> rentals;
 
 }

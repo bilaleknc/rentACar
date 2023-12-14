@@ -20,6 +20,5 @@ public class Color {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "color")
-    @JsonIgnore
     private List<Car> cars;
 }

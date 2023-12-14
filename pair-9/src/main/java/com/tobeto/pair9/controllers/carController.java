@@ -8,6 +8,7 @@ import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
 import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,11 +23,11 @@ public class carController {
 
     private CarService carService;
 
-    @GetMapping()
+    @GetMapping("/getAll")
     public List<GetListCarResponse> getAll(){
         return carService.getAll();
     }
-    @GetMapping("/{id}")
+    @GetMapping("/getById/{id}")
     public GetByIdCarResponse getById(@PathVariable int id){
         return carService.getById(id);
     }
@@ -36,12 +37,18 @@ public class carController {
     public void add(@RequestBody @Valid AddCarRequest request){
         carService.add(request);
     }
-    @PutMapping("/{id}")
+
+    @PutMapping("/update")
     public void update(@RequestBody @Valid UpdateCarRequest request){
         this.carService.update(request);
     }
-    @DeleteMapping("/{id}")
+
+    @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
-        this.carService.delete(id);
+        carService.delete(id);
     }
+
+
+
+
 }

@@ -37,22 +37,23 @@ public class CarManager implements CarService {
     public GetByIdCarResponse getById(int id) {
         Car car = this.carRepository.findById(id).orElseThrow();
 
+
         return this.modelMapperService.forResponse()
                 .map(car, GetByIdCarResponse.class);
     }
 
     @Override
     public void add(AddCarRequest request) {
-        Car car = this.modelMapperService.forRequest().map(request, Car.class);
+        if(carRepository.existsCarByPlate(request.getPlate())){
+            throw  new RuntimeException("There cannot be two vehicles with the same license plate");
+        }
 
+        Car car = this.modelMapperService.forRequest().map(request, Car.class);
         this.carRepository.save(car);
     }
 
     @Override
         public void update(UpdateCarRequest request) {
-
-        //Car car = this.carRepository.findById(id).orElseThrow();
-        //this.modelMapperService.forRequest().map(request,Car.class);
 
         Car car = this.modelMapperService.forRequest()
                 .map(request,Car.class);

@@ -27,7 +27,6 @@ public class Model {
     private Brand brand;
 
     @OneToMany(mappedBy = "model")
-    @JsonIgnore
     private List<Car> cars;
 
 }

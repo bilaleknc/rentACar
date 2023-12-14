@@ -13,12 +13,15 @@ import lombok.NoArgsConstructor;
 public class UpdateCarRequest {
 
     @Positive
+    private int id;
+
+    @Positive
     private int kilometer;
 
     private String plate;
 
     @Min(value=2005)
-    @Max(value=2014)
+    @Max(value=2024)
     private int year;
 
     @Positive

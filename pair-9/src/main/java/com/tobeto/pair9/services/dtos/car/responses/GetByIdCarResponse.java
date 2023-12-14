@@ -10,7 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GetByIdCarResponse {
-    private int id;
 
     private int  kilometer;
 
