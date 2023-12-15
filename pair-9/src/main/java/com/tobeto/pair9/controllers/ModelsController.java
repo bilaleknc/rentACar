@@ -19,21 +19,26 @@ import java.util.List;
 @RequestMapping("/api/models")
 
 public class ModelsController {
+
     private ModelService modelService;
+
     @GetMapping("/getAll")
     public List<GetListModelResponse> getAll(){
 
         return modelService.getAll();
     }
+
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public void add(@RequestBody @Valid AddModelRequest request){
         modelService.add(request);
     }
+
     @PutMapping("/update")
     public void update(@RequestBody @Valid UpdateModelRequest request){
         this.modelService.update(request);
     }
+
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
 

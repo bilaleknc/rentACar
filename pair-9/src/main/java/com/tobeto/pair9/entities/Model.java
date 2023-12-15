@@ -1,22 +1,20 @@
 package com.tobeto.pair9.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Table(name = "models")
 @Entity
-@Data
-
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Model {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")

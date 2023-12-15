@@ -21,24 +21,33 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "start_date")
     private LocalDate start_date;
+
     @Column(name = "end_date")
     private LocalDate end_date;
+
     @Column(name = "return_date")
     private LocalDate return_date;
+
     @Column(name = "start_kilometer")
     private int start_kilometer;
+
     @Column(name = "end_kilometer")
     private int end_kilometer;
+
     @Column(name = "total_price")
     private double total_price;
+
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
     @OneToMany(mappedBy = "rental")
     @JsonIgnore
     private List<Invoices> invoices;
