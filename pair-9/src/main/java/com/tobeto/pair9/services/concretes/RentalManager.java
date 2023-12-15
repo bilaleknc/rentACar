@@ -48,9 +48,10 @@ public class RentalManager implements RentalService {
 
     @Override
     public void add(AddRentalRequest request) {
-        calculateDiff(request.getStart_date(),request.getEnd_date());
+        long daysBetween = calculateDiff(request.getStart_date(),request.getEnd_date());
         Rental rental = this.modelMapperService.forRequest().map(request,Rental.class);
         double dailyPrice = carService.getById(request.getCarId()).getDailyPrice();
+        rental.setTotal_price(daysBetween * dailyPrice);
         this.rentalRepository.save(rental);
     }
 
