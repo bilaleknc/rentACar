@@ -4,70 +4,85 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="649eb281-5850-4d91-9c9b-8394bedfc6d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="da1cd099-6e76-476c-90bf-9cdd03dfd7e8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/controllers/RentalsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/brand/responses/GetByIdBrandResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/rental/requests/AddRentalRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/rental/requests/UpdateRentalRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/rental/responses/GetListRentalResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/controllers/ModelsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/controllers/ModelsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/core/utilities/mappers/ModelMapperManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/core/utilities/mappers/ModelMapperManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/entities/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/entities/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/entities/Rental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/entities/Rental.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/abstracts/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/abstracts/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/abstracts/RentalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/abstracts/RentalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/BrandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/BrandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/CarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/CarManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/ModelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/RentalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/concretes/RentalManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/car/requests/AddCarRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/car/requests/AddCarRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/model/requests/AddModelRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/model/requests/AddModelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/model/requests/UpdateModelRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tobeto/pair9/services/dtos/model/requests/UpdateModelRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2ZXighliSYQPOLltWgJ6fBwVleR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2ZZdeMTzhNX5wUqZv4fxP5a2mma" />
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
-    <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Victus/Desktop/pair9clone/pair-9",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "f8748b500ec88619a2de40715db46290",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victus/Desktop/pair9clone/pair-9&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SQL Dialects&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ozanz\intelij-projects\rentACar-main\pair-9\src" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
     <configuration name="Pair9Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="pair9clone" />
+      <module name="pair-9" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tobeto.pair9.Pair9Application" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -77,36 +92,23 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="649eb281-5850-4d91-9c9b-8394bedfc6d2" name="Changes" comment="" />
-      <created>1702574937221</created>
+      <changelist id="da1cd099-6e76-476c-90bf-9cdd03dfd7e8" name="Changes" comment="" />
+      <created>1702633635042</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1702574937221</updated>
-      <workItem from="1702574938249" duration="64000" />
-      <workItem from="1702575085827" duration="492000" />
-      <workItem from="1702576125068" duration="65000" />
-      <workItem from="1702576202855" duration="201000" />
-      <workItem from="1702578297991" duration="85000" />
-      <workItem from="1702578392567" duration="509000" />
-      <workItem from="1702578918635" duration="902000" />
-      <workItem from="1702579862408" duration="200000" />
-      <workItem from="1702580291198" duration="2229000" />
-      <workItem from="1702629789706" duration="2893000" />
+      <updated>1702633635042</updated>
+      <workItem from="1702633636603" duration="704000" />
+      <workItem from="1702641311365" duration="5649000" />
+      <workItem from="1702651192907" duration="720000" />
+      <workItem from="1702653250491" duration="7426000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
