@@ -36,8 +36,6 @@ public class CarManager implements CarService {
     @Override
     public GetByIdCarResponse getById(int id) {
         Car car = this.carRepository.findById(id).orElseThrow();
-
-
         return this.modelMapperService.forResponse()
                 .map(car, GetByIdCarResponse.class);
     }

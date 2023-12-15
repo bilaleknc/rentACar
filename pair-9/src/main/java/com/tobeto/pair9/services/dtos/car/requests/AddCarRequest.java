@@ -1,7 +1,5 @@
 package com.tobeto.pair9.services.dtos.car.requests;
 
-import com.tobeto.pair9.entities.Model;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +13,7 @@ public class AddCarRequest {
     @Positive
     private int kilometer;
 
-    @NotBlank(message = "Plaka boş olamaz!")
+    @NotBlank(message = "Plate cannot be null!!")
     @Pattern(regexp = "^(0[1-9]|[1-8][0-9]|9[0-8])[A-Z\s]{1,3}\\d{2,4}$", message = "Invalid Turkish license plate format!")
     private String plate;
 

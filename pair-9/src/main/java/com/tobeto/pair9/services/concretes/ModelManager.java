@@ -1,12 +1,10 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Color;
 import com.tobeto.pair9.entities.Model;
 import com.tobeto.pair9.repositories.ModelRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.abstracts.ModelService;
-import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
 import com.tobeto.pair9.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair9.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;
@@ -14,7 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,7 +36,6 @@ public class ModelManager implements ModelService {
         }
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
-
     }
 
     @Override
@@ -49,8 +45,6 @@ public class ModelManager implements ModelService {
         }
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
-
-
     }
 
     @Override

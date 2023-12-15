@@ -1,4 +1,19 @@
 package com.tobeto.pair9.services.abstracts;
 
+import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
+import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
+import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;
+
+import java.util.List;
+
 public interface RentalService {
+
+    List<GetListRentalResponse> getAll();
+
+    void add(AddRentalRequest request);
+
+    void update (UpdateRentalRequest request);
+
+    void delete(int id);
+
 }

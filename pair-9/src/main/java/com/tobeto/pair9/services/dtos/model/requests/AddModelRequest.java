@@ -1,6 +1,4 @@
 package com.tobeto.pair9.services.dtos.model.requests;
-
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
