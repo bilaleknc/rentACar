@@ -54,4 +54,9 @@ public class ModelManager implements ModelService {
         this.modelRepository.deleteById(id);
     }
 
+    @Override
+    public boolean existsId(int id) {
+        return modelRepository.existsById(id);
+    }
+
 }

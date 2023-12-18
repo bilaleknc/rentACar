@@ -41,22 +41,32 @@ public class CarManager implements CarService {
                 .map(car, GetByIdCarResponse.class);
     }
 
+    void entryCheck(String plate, int modelId, int colorId){
+        if (carRepository.existsCarByPlate(plate))
+            throw  new RuntimeException("There cannot be two vehicles with the same license plate!");
+        if (!modelService.existsId(modelId))
+            throw new RuntimeException("There is no model in the given id!");
+        if (!colorService.existsId(colorId))
+            throw new RuntimeException("There is no color in the given id!");
+    }
+
     @Override
     public void add(AddCarRequest request) {
-        if(carRepository.existsCarByPlate(request.getPlate())){
-            throw  new RuntimeException("There cannot be two vehicles with the same license plate");
-        }
-
+        entryCheck(request.getPlate(), request.getModelId(), request.getColorId());
         Car car = this.modelMapperService.forRequest().map(request, Car.class);
         this.carRepository.save(car);
     }
 
     @Override
     public void update(UpdateCarRequest request) {
-
+        entryCheck(request.getPlate(), request.getModelId(), request.getColorId());
         Car car = this.modelMapperService.forRequest()
                 .map(request,Car.class);
         this.carRepository.save(car);
+    }
+
+    public boolean existsId(int id) {
+        return carRepository.existsById(id);
     }
 
     @Override

@@ -47,21 +47,31 @@ public class RentalManager implements RentalService {
         return daysBetween;
     }
 
+    void checkId(int carId, int userId){
+        if (!carService.existsId(carId))
+            throw new RuntimeException("There is no car in the given id.");
+        if (!userService.existsId(userId))
+            throw new RuntimeException("There is no user in the given id");
+    }
+
     @Override
     public void add(AddRentalRequest request) {
+
+        checkId(request.getCarId(), request.getUserId());
 
         long daysBetween = calculateDiff(request.getStart_date(), request.getEnd_date());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         double dailyPrice = carService.getById(request.getCarId()).getDailyPrice();
         rental.setTotal_price(daysBetween * dailyPrice);
-
         this.rentalRepository.save(rental);
     }
 
     @Override
     public void update(UpdateRentalRequest request) {
-        calculateDiff(request.getStart_date(), request.getEnd_date());
 
+        checkId(request.getCarId(), request.getUserId());
+
+        calculateDiff(request.getStart_date(), request.getEnd_date());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         this.rentalRepository.save(rental);
     }

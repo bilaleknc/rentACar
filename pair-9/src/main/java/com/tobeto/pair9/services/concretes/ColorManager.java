@@ -50,4 +50,9 @@ public class ColorManager implements ColorService {
         this.colorRepository.deleteById(id);
 
     }
+
+    @Override
+    public boolean existsId(int id) {
+        return colorRepository.existsById(id);
+    }
 }

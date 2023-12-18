@@ -20,4 +20,6 @@ public interface CarService{
     void update(UpdateCarRequest request);
 
     void delete(int id);
+
+    boolean existsId(int id);
 }

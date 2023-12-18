@@ -16,6 +16,6 @@ public interface ModelService {
     void update(UpdateModelRequest request);
     void delete(int id);
 
-
+    boolean existsId(int id);
 
 }
