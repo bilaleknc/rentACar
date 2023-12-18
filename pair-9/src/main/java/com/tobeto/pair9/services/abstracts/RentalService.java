@@ -19,4 +19,5 @@ public interface RentalService {
     void update(UpdateRentalRequest request);
 
     void delete(int id);
+    void checkId(int carId, int userId);
 }

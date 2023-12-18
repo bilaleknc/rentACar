@@ -41,7 +41,7 @@ public class CarManager implements CarService {
                 .map(car, GetByIdCarResponse.class);
     }
 
-    void entryCheck(String plate, int modelId, int colorId){
+    public void entryCheck(String plate, int modelId, int colorId){
         if (carRepository.existsCarByPlate(plate))
             throw  new RuntimeException("There cannot be two vehicles with the same license plate!");
         if (!modelService.existsId(modelId))

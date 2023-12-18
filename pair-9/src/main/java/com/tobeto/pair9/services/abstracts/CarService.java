@@ -22,4 +22,5 @@ public interface CarService{
     void delete(int id);
 
     boolean existsId(int id);
+    void entryCheck(String plate, int modelId, int colorId);
 }
