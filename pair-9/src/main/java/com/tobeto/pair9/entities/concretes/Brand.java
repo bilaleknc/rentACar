@@ -1,6 +1,7 @@
-package com.tobeto.pair9.entities;
+package com.tobeto.pair9.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,19 +10,14 @@ import java.util.List;
 @Table(name="brands")
 @Entity
 @Data
-
-
-
-
-public class Brand {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+@AllArgsConstructor
+@NoArgsConstructor
+public class Brand extends BaseEntity {
 
     @Column(name = "name")
     private String name;
+    @Column(name= "logo_path")
+    private String logoPath;
 
     @OneToMany(mappedBy = "brand")
     @JsonIgnore

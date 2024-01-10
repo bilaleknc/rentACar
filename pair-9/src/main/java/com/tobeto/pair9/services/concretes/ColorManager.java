@@ -1,7 +1,7 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Color;
+import com.tobeto.pair9.entities.concretes.Color;
 import com.tobeto.pair9.repositories.ColorRepository;
 import com.tobeto.pair9.services.abstracts.ColorService;
 import com.tobeto.pair9.services.dtos.color.requests.AddColorRequest;
@@ -49,5 +49,10 @@ public class ColorManager implements ColorService {
     public void delete(int id) {
         this.colorRepository.deleteById(id);
 
+    }
+
+    @Override
+    public boolean existsId(int id) {
+        return colorRepository.existsById(id);
     }
 }

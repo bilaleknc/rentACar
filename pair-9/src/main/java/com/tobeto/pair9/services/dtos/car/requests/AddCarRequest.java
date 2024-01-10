@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class AddCarRequest {
 
     @Positive
-    private int kilometer;
+    private Long kilometer;
 
     @NotBlank(message = "Plate cannot be null!!")
     @Pattern(regexp = "^(0[1-9]|[1-8][0-9]|9[0-8])[A-Z\s]{1,3}\\d{2,4}$", message = "Invalid Turkish license plate format!")
@@ -23,14 +23,18 @@ public class AddCarRequest {
 
     @Min(value=2005)
     @Max(value=2024)
-    private int year;
+    private short modelYear;
 
-    @Positive
-    private double dailyPrice;
+    @Positive(message = "Price must be greater than zero")
+    private Float dailyPrice;
 
-    @Positive
+    private short minFindeksRate;
+
+    private String imagePath;
+
+    @Positive(message = "Id must be greater than zero")
     private int modelId;
 
-    @Positive
+    @Positive(message = "Id must be greater than zero")
     private int colorId;
 }

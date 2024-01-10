@@ -9,13 +9,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListCarResponse {
 
-    private int kilometer;
+    private Long kilometer;
 
     private String plate;
 
-    private int year;
+    private short modelYear;
 
-    private double dailyPrice;
+    private Float dailyPrice;
+
+    private short minFindeksRate;
+
+    private String imagePath;
 
     private String modelName;
 

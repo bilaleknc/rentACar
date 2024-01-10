@@ -16,18 +16,18 @@ public class UpdateRentalRequest {
     private int id;
 
     @FutureOrPresent
-    private LocalDate start_date;
+    private LocalDate startDate;
 
     @FutureOrPresent
-    private LocalDate end_date;
+    private LocalDate endDate;
 
     @Nullable
-    private LocalDate return_date;
+    private LocalDate returnDate;
 
     @Nullable
-    private int end_kilometer;
+    private int endKilometer;
 
-    private double total_price;
+
 
     private int carId;
 

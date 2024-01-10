@@ -1,7 +1,7 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Rental;
+import com.tobeto.pair9.entities.concretes.Rental;
 import com.tobeto.pair9.repositories.RentalRepository;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.abstracts.RentalService;
@@ -25,6 +25,14 @@ public class RentalManager implements RentalService {
     private final CarService carService;
     private final UserService userService;
     private final ModelMapperService modelMapperService;
+    @Override
+    public void checkId(int carId, int userId) {
+        if (!carService.existsId(carId))
+            throw new RuntimeException("There is no car in the given id.");
+        if (!userService.existsId(userId))
+            throw new RuntimeException("There is no user in the given id");
+
+    }
 
     @Override
     public List<GetListRentalResponse> getAll() {
@@ -48,6 +56,7 @@ public class RentalManager implements RentalService {
 
     @Override
     public void add(AddRentalRequest request) {
+       checkId(request.getCarId(), request.getUserId());
         long daysBetween = calculateDiff(request.getStart_date(),request.getEnd_date());
         Rental rental = this.modelMapperService.forRequest().map(request,Rental.class);
         double dailyPrice = carService.getById(request.getCarId()).getDailyPrice();
@@ -57,6 +66,8 @@ public class RentalManager implements RentalService {
 
     @Override
     public void update(UpdateRentalRequest request) {
+
+       checkId(request.getCarId(), request.getUserId());
         calculateDiff(request.getStart_date(),request.getEnd_date());
         Rental rental = this.modelMapperService.forRequest().map(request,Rental.class);
         this.rentalRepository.save(rental);
@@ -67,4 +78,6 @@ public class RentalManager implements RentalService {
     public void delete(int id) {
         this.rentalRepository.deleteById(id);
     }
+
+
 }

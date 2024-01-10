@@ -13,10 +13,10 @@ import java.time.LocalDate;
 public class AddRentalRequest {
 
     @FutureOrPresent
-    private LocalDate start_date;
+    private LocalDate startDate;
 
     @FutureOrPresent
-    private LocalDate end_date;
+    private LocalDate endDate;
 
     private int carId;
 

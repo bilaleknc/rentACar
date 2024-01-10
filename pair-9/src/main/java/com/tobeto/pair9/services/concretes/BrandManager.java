@@ -1,14 +1,12 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Brand;
-import com.tobeto.pair9.entities.Color;
+import com.tobeto.pair9.entities.concretes.Brand;
 import com.tobeto.pair9.repositories.BrandRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.responses.GetListBrandResponse;
-import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

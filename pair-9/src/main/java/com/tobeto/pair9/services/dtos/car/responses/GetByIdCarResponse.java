@@ -19,6 +19,10 @@ public class GetByIdCarResponse {
 
     private double dailyPrice;
 
+    private short minFindeksRate;
+
+    private String imagePath;
+
     private String  modelName;
 
     private String colorName;

@@ -15,6 +15,8 @@ public class UpdateBrandRequest {
     @Positive(message = "Id must be greater than zero")
     private int id;
 
+    private String logoPath;
+
     @Length(min=2,message = "The brand name must be at least 2 character")
     private String name;
 }

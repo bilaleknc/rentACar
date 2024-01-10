@@ -1,7 +1,7 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Car;
+import com.tobeto.pair9.entities.concretes.Car;
 import com.tobeto.pair9.repositories.CarRepository;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.abstracts.ColorService;
@@ -24,6 +24,14 @@ public class CarManager implements CarService {
     private ModelService modelService;
     private ColorService colorService;
     private ModelMapperService modelMapperService;
+     public void entryCheck(String plate, int modelId, int colorId){
+        if (carRepository.existsCarByPlate(plate))
+            throw  new RuntimeException("There cannot be two vehicles with the same license plate!");
+        if (!modelService.existsId(modelId))
+            throw new RuntimeException("There is no model in the given id!");
+        if (!colorService.existsId(colorId))
+            throw new RuntimeException("There is no color in the given id!");
+    }
 
     @Override
     public List<GetListCarResponse> getAll() {
@@ -42,6 +50,7 @@ public class CarManager implements CarService {
 
     @Override
     public void add(AddCarRequest request) {
+         entryCheck(request.getPlate(), request.getModelId(), request.getColorId());
         if(carRepository.existsCarByPlate(request.getPlate())){
             throw  new RuntimeException("There cannot be two vehicles with the same license plate");
         }
@@ -52,6 +61,7 @@ public class CarManager implements CarService {
 
     @Override
         public void update(UpdateCarRequest request) {
+        entryCheck(request.getPlate(), request.getModelId(), request.getColorId());
 
         Car car = this.modelMapperService.forRequest()
                 .map(request,Car.class);
@@ -62,4 +72,9 @@ public class CarManager implements CarService {
     public void delete(int id) {
         this.carRepository.deleteById(id);
     }
-}
+
+    @Override
+    public boolean existsId(int id) {
+        return carRepository.existsById(id);
+    }
+    }

@@ -14,6 +14,8 @@ public class UpdateColorRequest {
     @Positive(message = "Id must be greater than zero")
     private int id;
 
+    private String code;
+
     @Length(min=2,message = "The color name must be at least 2 character")
     private String name;
 }

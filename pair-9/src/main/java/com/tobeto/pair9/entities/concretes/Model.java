@@ -1,6 +1,8 @@
-package com.tobeto.pair9.entities;
+package com.tobeto.pair9.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tobeto.pair9.entities.absracts.BaseEntity;
+import com.tobeto.pair9.entities.concretes.Brand;
+import com.tobeto.pair9.entities.concretes.Car;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,13 +13,9 @@ import java.util.List;
 @Table(name = "models")
 @Entity
 @Data
-
-
-public class Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+@AllArgsConstructor
+@NoArgsConstructor
+public class Model extends BaseEntity {
 
     @Column(name = "name")
     private String name;

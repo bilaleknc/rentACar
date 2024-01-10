@@ -11,17 +11,16 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GetListRentalResponse {
 
-    private LocalDate start_date;
+    private LocalDate startDate;
 
-    private LocalDate end_date;
+    private LocalDate endDate;
 
-    private LocalDate return_date;
+    private LocalDate returnDate;
 
-    private int start_kilometer;
+    private int startKilometer;
 
-    private int end_kilometer;
+    private int endKilometer;
 
-    private double total_price;
 
     private int carId;
 

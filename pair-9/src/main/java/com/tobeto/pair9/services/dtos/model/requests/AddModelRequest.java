@@ -15,4 +15,5 @@ public class AddModelRequest {
     @Positive(message = "Id must be greater than zero")
     private int brandId;
 
+
 }
