@@ -1,8 +1,8 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Brand;
-import com.tobeto.pair9.entities.Model;
+import com.tobeto.pair9.entities.concretes.Brand;
+import com.tobeto.pair9.entities.concretes.Model;
 import com.tobeto.pair9.repositories.ModelRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.abstracts.ModelService;

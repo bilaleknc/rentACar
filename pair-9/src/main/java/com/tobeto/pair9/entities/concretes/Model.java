@@ -1,21 +1,17 @@
-package com.tobeto.pair9.entities;
+package com.tobeto.pair9.entities.concretes;
 
+import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
-@Table(name = "models")
+@Data
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Model {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+@Table(name = "models")
+public class Model extends BaseEntity {
 
     @Column(name = "name")
     private String name;

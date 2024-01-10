@@ -1,13 +1,11 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Car;
-import com.tobeto.pair9.entities.Rental;
+import com.tobeto.pair9.entities.concretes.Rental;
 import com.tobeto.pair9.repositories.RentalRepository;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.abstracts.RentalService;
 import com.tobeto.pair9.services.abstracts.UserService;
-import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;
@@ -59,10 +57,8 @@ public class RentalManager implements RentalService {
 
         checkId(request.getCarId(), request.getUserId());
 
-        long daysBetween = calculateDiff(request.getStart_date(), request.getEnd_date());
+        long daysBetween = calculateDiff(request.getStartDate(), request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
-        double dailyPrice = carService.getById(request.getCarId()).getDailyPrice();
-        rental.setTotal_price(daysBetween * dailyPrice);
         this.rentalRepository.save(rental);
     }
 
@@ -71,7 +67,7 @@ public class RentalManager implements RentalService {
 
         checkId(request.getCarId(), request.getUserId());
 
-        calculateDiff(request.getStart_date(), request.getEnd_date());
+        calculateDiff(request.getStartDate(), request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         this.rentalRepository.save(rental);
     }

@@ -4,4 +4,12 @@ import com.tobeto.pair9.entities.concretes.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InvoiceRepository extends JpaRepository<Invoice,Integer> {
+
+
+
+
 }
+
+
+//double dailyPrice = carService.getById(request.getCarId()).getDailyPrice();
+//    rental.setTotal_price(daysBetween * dailyPrice);

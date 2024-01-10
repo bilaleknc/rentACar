@@ -13,17 +13,15 @@ import java.time.LocalDate;
 public class AddRentalRequest {
 
     @FutureOrPresent(message = "Start date can't be any later than today!")
-    private LocalDate start_date;
+    private LocalDate startDate;
 
-    private LocalDate end_date;
+    private LocalDate endDate;
 
-    private LocalDate return_date;
+    private LocalDate returnDate;
 
-    private int start_kilometer;
+    private Long startKilometer;
 
-    private int end_kilometer;
-
-    private double total_price;
+    private Long endKilometer;
 
     private int carId;
 

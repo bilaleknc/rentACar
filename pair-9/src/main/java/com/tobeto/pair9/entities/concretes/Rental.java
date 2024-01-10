@@ -1,6 +1,7 @@
-package com.tobeto.pair9.entities;
+package com.tobeto.pair9.entities.concretes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,35 +11,29 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-@Table(name = "rentals")
-@Entity
+import com.tobeto.pair9.entities.concretes.Car;
+
 @Data
-
-
-
-public class Rental {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="rentals")
+public class Rental extends BaseEntity {
 
     @Column(name = "start_date")
-    private LocalDate start_date;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private LocalDate end_date;
+    private LocalDate endDate;
 
     @Column(name = "return_date")
-    private LocalDate return_date;
+    private LocalDate returnDate;
 
     @Column(name = "start_kilometer")
-    private int start_kilometer;
+    private Long startKilometer;
 
     @Column(name = "end_kilometer")
-    private int end_kilometer;
-
-    @Column(name = "total_price")
-    private double total_price;
+    private Long endKilometer;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
@@ -49,6 +44,5 @@ public class Rental {
     private User user;
 
     @OneToMany(mappedBy = "rental")
-    @JsonIgnore
-    private List<Invoices> invoices;
+    private List<Invoice> invoices;
 }

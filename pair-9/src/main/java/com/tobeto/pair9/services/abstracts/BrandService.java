@@ -1,6 +1,6 @@
 package com.tobeto.pair9.services.abstracts;
 
-import com.tobeto.pair9.entities.Brand;
+import com.tobeto.pair9.entities.concretes.Brand;
 import com.tobeto.pair9.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;

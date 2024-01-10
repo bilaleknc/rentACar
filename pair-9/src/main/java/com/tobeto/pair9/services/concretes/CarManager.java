@@ -1,7 +1,7 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Car;
+import com.tobeto.pair9.entities.concretes.Car;
 import com.tobeto.pair9.repositories.CarRepository;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.abstracts.ColorService;
