@@ -3,27 +3,29 @@ package com.tobeto.pair9.services.dtos.rental.responses;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.convert.DataSizeUnit;
 
 import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetListRentalResponse {
 
-    private LocalDate startDate;
+    private int id;
 
-    private LocalDate endDate;
+    private LocalDate start_date;
 
-    private LocalDate returnDate;
+    private LocalDate end_date;
 
-    private int startKilometer;
+    private LocalDate return_date;
 
-    private int endKilometer;
+    private int start_kilometer;
 
+    private int end_kilometer;
+
+    private double total_price;
 
     private int carId;
 
     private int userId;
-
 }

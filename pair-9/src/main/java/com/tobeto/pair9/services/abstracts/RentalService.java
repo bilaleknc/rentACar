@@ -1,5 +1,9 @@
 package com.tobeto.pair9.services.abstracts;
 
+import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
+import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
+import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
+import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;
@@ -12,9 +16,8 @@ public interface RentalService {
 
     void add(AddRentalRequest request);
 
-    void update (UpdateRentalRequest request);
+    void update(UpdateRentalRequest request);
 
     void delete(int id);
     void checkId(int carId, int userId);
-
 }

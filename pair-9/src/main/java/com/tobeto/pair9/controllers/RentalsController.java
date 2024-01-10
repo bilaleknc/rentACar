@@ -1,13 +1,15 @@
 package com.tobeto.pair9.controllers;
 
 import com.tobeto.pair9.services.abstracts.RentalService;
-
+import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
+import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
+import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
+import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +22,8 @@ public class RentalsController {
 
     private RentalService rentalService;
 
-
     @GetMapping("/getAll")
-    public List<GetListRentalResponse>  getAll(){
+    public List<GetListRentalResponse> getAll(){
         return rentalService.getAll();
     }
 
@@ -36,6 +37,7 @@ public class RentalsController {
     public void update(@RequestBody @Valid UpdateRentalRequest request){
         rentalService.update(request);
     }
+
     @DeleteMapping("{id}")
     public void delete(@PathVariable int id){
         rentalService.delete(id);

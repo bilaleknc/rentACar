@@ -17,6 +17,6 @@ public interface ModelService {
     void delete(int id);
     boolean existsId(int id);
 
-
+    boolean existsId(int id);
 
 }

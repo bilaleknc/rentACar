@@ -1,40 +1,54 @@
-package com.tobeto.pair9.entities.concretes;
+package com.tobeto.pair9.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "rentals")
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 
 
-public class Rental extends BaseEntity {
+
+public class Rental {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "start_date")
-    private LocalDate startDate;
+    private LocalDate start_date;
+
     @Column(name = "end_date")
-    private LocalDate endDate;
+    private LocalDate end_date;
+
     @Column(name = "return_date")
-    private LocalDate returnDate;
+    private LocalDate return_date;
+
     @Column(name = "start_kilometer")
-    private Long startKilometer;
+    private int start_kilometer;
+
     @Column(name = "end_kilometer")
-    private Long endKilometer;
+    private int end_kilometer;
+
+    @Column(name = "total_price")
+    private double total_price;
 
     @ManyToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "rental")
+    @JsonIgnore
+    private List<Invoices> invoices;
 }

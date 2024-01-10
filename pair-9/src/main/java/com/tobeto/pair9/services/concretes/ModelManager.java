@@ -1,10 +1,12 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.concretes.Model;
+import com.tobeto.pair9.entities.Brand;
+import com.tobeto.pair9.entities.Model;
 import com.tobeto.pair9.repositories.ModelRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.abstracts.ModelService;
+import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair9.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair9.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;
@@ -50,11 +52,11 @@ public class ModelManager implements ModelService {
     @Override
     public void delete(int id) {
         this.modelRepository.deleteById(id);
-
     }
 
     @Override
     public boolean existsId(int id) {
         return modelRepository.existsById(id);
     }
+
 }

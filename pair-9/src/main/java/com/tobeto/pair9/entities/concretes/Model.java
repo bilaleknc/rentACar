@@ -1,21 +1,21 @@
-package com.tobeto.pair9.entities.concretes;
+package com.tobeto.pair9.entities;
 
-import com.tobeto.pair9.entities.absracts.BaseEntity;
-import com.tobeto.pair9.entities.concretes.Brand;
-import com.tobeto.pair9.entities.concretes.Car;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Table(name = "models")
 @Entity
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
-public class Model extends BaseEntity {
+@AllArgsConstructor
+public class Model {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "name")
     private String name;
