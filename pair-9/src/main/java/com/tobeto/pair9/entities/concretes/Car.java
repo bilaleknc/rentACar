@@ -1,6 +1,5 @@
 package com.tobeto.pair9.entities.concretes;
 
-import com.tobeto.pair9.entities.concretes.Rental;
 import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

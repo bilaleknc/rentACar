@@ -48,7 +48,6 @@ public class ColorManager implements ColorService {
     @Override
     public void delete(int id) {
         this.colorRepository.deleteById(id);
-
     }
 
     @Override

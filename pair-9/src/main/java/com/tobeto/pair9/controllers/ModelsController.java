@@ -1,9 +1,6 @@
 package com.tobeto.pair9.controllers;
 
 import com.tobeto.pair9.services.abstracts.ModelService;
-import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
-import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
-import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import com.tobeto.pair9.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair9.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;

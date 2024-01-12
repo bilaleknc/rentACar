@@ -1,10 +1,6 @@
 package com.tobeto.pair9.controllers;
 
 import com.tobeto.pair9.services.abstracts.RentalService;
-import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
-import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
-import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
-import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;

@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -23,9 +22,7 @@ public class BrandManager implements BrandService {
     @Override
     public GetByIdBrandResponse getById(int id) {
         Brand brand = this.brandRepository.findById(id).orElseThrow();
-        GetByIdBrandResponse response = this.modelMapperService.forResponse().map(brand, GetByIdBrandResponse.class);
-
-        return response;
+        return this.modelMapperService.forResponse().map(brand, GetByIdBrandResponse.class);
     }
 
     @Override
@@ -39,9 +36,8 @@ public class BrandManager implements BrandService {
         if(brandRepository.existsByName(request.getName())){
             throw new RuntimeException("There cannot be same brand");
         }
-       Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
+        Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
         this.brandRepository.save(brand);
-
     }
 
     @Override
@@ -51,12 +47,15 @@ public class BrandManager implements BrandService {
         }
         Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
         this.brandRepository.save(brand);
-
     }
 
     @Override
     public void delete(int id) {
         this.brandRepository.deleteById(id);
+    }
 
+    @Override
+    public boolean existsId(int id) {
+        return brandRepository.existsById(id);
     }
 }

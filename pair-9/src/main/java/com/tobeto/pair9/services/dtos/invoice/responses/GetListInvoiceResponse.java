@@ -8,9 +8,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetListInvoiceResponse {
+
     private int id;
+
     private String invoiceNo;
+
     private Float totalPrice;
+
     private Float discountRate;
+
     private Float taxRate;
 }

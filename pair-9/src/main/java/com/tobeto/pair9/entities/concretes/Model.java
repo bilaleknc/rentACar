@@ -6,11 +6,11 @@ import lombok.*;
 
 import java.util.List;
 
+@Table(name = "models")
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "models")
 public class Model extends BaseEntity {
 
     @Column(name = "name")

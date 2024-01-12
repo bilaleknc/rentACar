@@ -9,8 +9,8 @@ import org.hibernate.validator.constraints.Length;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class UpdateColorRequest {
+
     @Positive(message = "Id must be greater than zero")
     private int id;
 

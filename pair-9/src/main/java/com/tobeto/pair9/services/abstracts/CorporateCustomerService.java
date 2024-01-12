@@ -7,8 +7,14 @@ import com.tobeto.pair9.services.dtos.corporateCustomer.responses.GetListCorpora
 import java.util.List;
 
 public interface CorporateCustomerService {
+
     List<GetListCorporateCustomerResponse> getAll();
+
     void add(AddCorporateCustomerRequest request);
+
     void update(UpdateCorporateCustomerRequest request);
+
     void delete(int id);
+
+    void entryCheck(String companyName, String taxNo,int userId);
 }

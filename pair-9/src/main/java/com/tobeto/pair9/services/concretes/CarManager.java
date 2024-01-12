@@ -36,19 +36,10 @@ public class CarManager implements CarService {
     @Override
     public GetByIdCarResponse getById(int id) {
         Car car = this.carRepository.findById(id).orElseThrow();
-
         return this.modelMapperService.forResponse()
                 .map(car, GetByIdCarResponse.class);
     }
 
-    public void entryCheck(String plate, int modelId, int colorId){
-        if (carRepository.existsCarByPlate(plate))
-            throw  new RuntimeException("There cannot be two vehicles with the same license plate!");
-        if (!modelService.existsId(modelId))
-            throw new RuntimeException("There is no model in the given id!");
-        if (!colorService.existsId(colorId))
-            throw new RuntimeException("There is no color in the given id!");
-    }
 
     @Override
     public void add(AddCarRequest request) {
@@ -72,5 +63,14 @@ public class CarManager implements CarService {
     @Override
     public void delete(int id) {
         this.carRepository.deleteById(id);
+    }
+
+    public void entryCheck(String plate, int modelId, int colorId){
+        if (carRepository.existsCarByPlate(plate))
+            throw  new RuntimeException("There cannot be two vehicles with the same license plate!");
+        if (!modelService.existsId(modelId))
+            throw new RuntimeException("There is no model in the given id!");
+        if (!colorService.existsId(colorId))
+            throw new RuntimeException("There is no color in the given id!");
     }
 }

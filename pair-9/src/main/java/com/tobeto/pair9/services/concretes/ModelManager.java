@@ -34,7 +34,7 @@ public class ModelManager implements ModelService {
     @Override
     public void add(AddModelRequest request) {
         if(modelRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
+            throw new RuntimeException("There cannot be same model");
         }
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
@@ -42,9 +42,7 @@ public class ModelManager implements ModelService {
 
     @Override
     public void update(UpdateModelRequest request) {
-        if(modelRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
-        }
+        entryCheck(request.getName(),request.getBrandId());
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
     }
@@ -59,4 +57,13 @@ public class ModelManager implements ModelService {
         return modelRepository.existsById(id);
     }
 
+    @Override
+    public void entryCheck(String name,int brandId) {
+        if(modelRepository.existsByName(name)){
+            throw new RuntimeException("There cannot be same model");
+        }
+        if(!brandService.existsId(brandId)){
+            throw new RuntimeException("There is no brand in the given id!");
+        }
+    }
 }

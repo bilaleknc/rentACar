@@ -34,39 +34,28 @@ public class RentalManager implements RentalService {
                         .map(rental, GetListRentalResponse.class)).collect(Collectors.toList());
     }
 
-    private long calculateDiff(LocalDate date1, LocalDate date2){
+    private boolean calculateDiff(LocalDate date1, LocalDate date2){
         // İki tarih arasındaki farkı hesapla
-
         long daysBetween = ChronoUnit.DAYS.between(date1, date2);
         if (daysBetween < 0)
             throw new RuntimeException("The end date cannot be earlier than the start date.");
         if (daysBetween > 25)
             throw new RuntimeException("The vehicle cannot be rented for more than 25 days");
-        return daysBetween;
-    }
-
-    public void checkId(int carId, int userId){
-        if (!carService.existsId(carId))
-            throw new RuntimeException("There is no car in the given id.");
-        if (!userService.existsId(userId))
-            throw new RuntimeException("There is no user in the given id");
+        return true;
     }
 
     @Override
     public void add(AddRentalRequest request) {
-
-        checkId(request.getCarId(), request.getUserId());
-
-        long daysBetween = calculateDiff(request.getStartDate(), request.getEndDate());
-        Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
-        this.rentalRepository.save(rental);
+        entryCheck(request.getCarId(), request.getUserId());
+        if(calculateDiff(request.getStartDate(), request.getEndDate())){
+            Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
+            this.rentalRepository.save(rental);
+        }
     }
 
     @Override
     public void update(UpdateRentalRequest request) {
-
-        checkId(request.getCarId(), request.getUserId());
-
+        entryCheck(request.getCarId(), request.getUserId());
         calculateDiff(request.getStartDate(), request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         this.rentalRepository.save(rental);
@@ -75,5 +64,17 @@ public class RentalManager implements RentalService {
     @Override
     public void delete(int id) {
         this.rentalRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsId(int id) {
+        return rentalRepository.existsById(id);
+    }
+
+    public void entryCheck(int carId, int userId){
+        if (!carService.existsId(carId))
+            throw new RuntimeException("There is no car in the given id.");
+        if (!userService.existsId(userId))
+            throw new RuntimeException("There is no user in the given id");
     }
 }
