@@ -8,8 +8,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetListCustomerResponse {
+
     private int id;
+
+    private String identityNumber;
+
     private String firstName;
+
     private String lastName;
-    private int user_id;
+
+    private int userId;
 }

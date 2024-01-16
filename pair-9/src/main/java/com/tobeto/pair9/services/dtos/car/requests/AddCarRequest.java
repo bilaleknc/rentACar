@@ -1,7 +1,5 @@
 package com.tobeto.pair9.services.dtos.car.requests;
 
-import com.tobeto.pair9.entities.concretes.Model;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

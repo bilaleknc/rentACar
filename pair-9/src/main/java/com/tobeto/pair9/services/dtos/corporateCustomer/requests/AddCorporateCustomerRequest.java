@@ -8,8 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddCorporateCustomerRequest {
+
     private String companyName;
+
     private String taxNo;
-    private int user_id;
+
+    private int userId;
 
 }

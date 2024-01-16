@@ -1,18 +1,16 @@
 package com.tobeto.pair9.entities.concretes;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.tobeto.pair9.entities.concretes.Model;
 import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
+@Table(name="brands")
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="brands")
+
 public class Brand extends BaseEntity {
 
     @Column(name = "name")
@@ -22,6 +20,5 @@ public class Brand extends BaseEntity {
 
     @OneToMany(mappedBy = "brand")
     private List<Model>models;
-
 
 }

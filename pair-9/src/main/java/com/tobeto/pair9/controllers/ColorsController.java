@@ -18,20 +18,25 @@ import java.util.List;
 @AllArgsConstructor
 
 public class ColorsController {
+
     private ColorService colorService;
+
     @GetMapping("/getAll")
     public DataResult<List<GetListColorResponse>> getAll(){
         return colorService.getAll();
     }
+
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Result add(@RequestBody @Valid AddColorRequest request){
         return colorService.add(request);
     }
+
     @PutMapping("/update")
     public Result update(@RequestBody @Valid UpdateColorRequest request){
         return colorService.update(request);
     }
+
     @DeleteMapping("{id}")
     public Result delete(@PathVariable int id){
         return colorService.delete(id);

@@ -8,8 +8,6 @@ import org.hibernate.validator.constraints.Length;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-
 public class AddModelRequest {
 
 

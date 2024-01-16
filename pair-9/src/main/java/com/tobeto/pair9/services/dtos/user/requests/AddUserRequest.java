@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddUserRequest {
+
     @NotNull
     private String email;
     @NotNull

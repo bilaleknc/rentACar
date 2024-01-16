@@ -1,18 +1,18 @@
 package com.tobeto.pair9.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tobeto.pair9.entities.absracts.BaseEntity;
-import com.tobeto.pair9.entities.concretes.Rental;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Table(name = "users")
 @Entity
 @Data
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class User extends BaseEntity {
 
 
@@ -23,7 +23,6 @@ public class User extends BaseEntity {
     private String password;
 
     @OneToMany(mappedBy = "user")
-
     private List<Rental> rentals;
 
 }

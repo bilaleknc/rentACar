@@ -1,17 +1,13 @@
 package com.tobeto.pair9.entities.concretes;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-import com.tobeto.pair9.entities.concretes.Car;
 
 @Data
 @Entity
