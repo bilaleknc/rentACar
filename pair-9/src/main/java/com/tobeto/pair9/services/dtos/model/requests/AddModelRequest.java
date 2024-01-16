@@ -12,6 +12,9 @@ import org.hibernate.validator.constraints.Length;
 
 public class AddModelRequest {
 
+
+    // private int id;
+
     @Length(min=2,message = "The model name must be at least 2 character")
     private String name;
 

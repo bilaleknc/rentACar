@@ -1,6 +1,10 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
+import com.tobeto.pair9.core.utilities.results.SuccessDataResult;
+import com.tobeto.pair9.core.utilities.results.SuccessResult;
 import com.tobeto.pair9.entities.concretes.Rental;
 import com.tobeto.pair9.repositories.RentalRepository;
 import com.tobeto.pair9.services.abstracts.CarService;
@@ -27,11 +31,11 @@ public class RentalManager implements RentalService {
     private ModelMapperService modelMapperService;
 
     @Override
-    public List<GetListRentalResponse> getAll() {
+    public DataResult<List<GetListRentalResponse>> getAll() {
         List<Rental> rentals = rentalRepository.findAll();
-        return rentals.stream()
+        return new SuccessDataResult(rentals.stream()
                 .map(rental->this.modelMapperService.forResponse()
-                        .map(rental, GetListRentalResponse.class)).collect(Collectors.toList());
+                        .map(rental, GetListRentalResponse.class)).collect(Collectors.toList()), "Tüm data getirildi.");
     }
 
     private long calculateDiff(LocalDate date1, LocalDate date2){
@@ -53,27 +57,30 @@ public class RentalManager implements RentalService {
     }
 
     @Override
-    public void add(AddRentalRequest request) {
+    public Result add(AddRentalRequest request) {
 
         checkId(request.getCarId(), request.getUserId());
 
         long daysBetween = calculateDiff(request.getStartDate(), request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         this.rentalRepository.save(rental);
+        return new SuccessResult("Eklendi");
     }
 
     @Override
-    public void update(UpdateRentalRequest request) {
+    public Result update(UpdateRentalRequest request) {
 
         checkId(request.getCarId(), request.getUserId());
 
         calculateDiff(request.getStartDate(), request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         this.rentalRepository.save(rental);
+        return new SuccessResult("Güncellendi");
     }
 
     @Override
-    public void delete(int id) {
+    public Result delete(int id) {
         this.rentalRepository.deleteById(id);
+        return new SuccessResult("Silindi");
     }
 }

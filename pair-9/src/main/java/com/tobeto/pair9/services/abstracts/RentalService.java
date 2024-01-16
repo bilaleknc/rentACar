@@ -1,5 +1,7 @@
 package com.tobeto.pair9.services.abstracts;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
 import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
@@ -12,12 +14,12 @@ import java.util.List;
 
 public interface RentalService {
 
-    List<GetListRentalResponse> getAll();
+    DataResult<List<GetListRentalResponse>> getAll();
 
-    void add(AddRentalRequest request);
+    Result add(AddRentalRequest request);
 
-    void update(UpdateRentalRequest request);
+    Result update(UpdateRentalRequest request);
 
-    void delete(int id);
+    Result delete(int id);
     void checkId(int carId, int userId);
 }

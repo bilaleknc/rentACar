@@ -1,5 +1,7 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
@@ -17,21 +19,21 @@ import java.util.List;
 public class BrandsController {
     private BrandService brandService;
     @GetMapping("/getAll")
-    public List<GetListBrandResponse> getAll(){
+    public DataResult<List<GetListBrandResponse>> getAll(){
         return brandService.getAll();
     }
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddBrandRequest request){
-        brandService.add(request);
+    public Result add(@RequestBody @Valid AddBrandRequest request){
+        return brandService.add(request);
     }
     @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateBrandRequest request){
-        this.brandService.update(request);
+    public Result update(@RequestBody @Valid UpdateBrandRequest request){
+        return this.brandService.update(request);
     }
     @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
-        brandService.delete(id);
+    public Result delete(@PathVariable int id){
+        return brandService.delete(id);
     }
 
 

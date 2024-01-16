@@ -1,5 +1,7 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
 import com.tobeto.pair9.services.abstracts.ColorService;
 import com.tobeto.pair9.services.dtos.color.requests.AddColorRequest;
 import com.tobeto.pair9.services.dtos.color.requests.UpdateColorRequest;
@@ -18,21 +20,21 @@ import java.util.List;
 public class ColorsController {
     private ColorService colorService;
     @GetMapping("/getAll")
-    public List<GetListColorResponse> getAll(){
+    public DataResult<List<GetListColorResponse>> getAll(){
         return colorService.getAll();
     }
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddColorRequest request){
-        colorService.add(request);
+    public Result add(@RequestBody @Valid AddColorRequest request){
+        return colorService.add(request);
     }
     @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateColorRequest request){
-        colorService.update(request);
+    public Result update(@RequestBody @Valid UpdateColorRequest request){
+        return colorService.update(request);
     }
     @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
-        colorService.delete(id);
+    public Result delete(@PathVariable int id){
+        return colorService.delete(id);
     }
 
 

@@ -1,5 +1,6 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
 import com.tobeto.pair9.services.abstracts.CorporateCustomerService;
 import com.tobeto.pair9.services.dtos.corporateCustomer.responses.GetListCorporateCustomerResponse;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 public class CorporateCustomersController {
     private CorporateCustomerService corporateCustomerService;
     @GetMapping("/getAll")
-    public List<GetListCorporateCustomerResponse> getAll(){
+    public DataResult<List<GetListCorporateCustomerResponse>> getAll(){
         return corporateCustomerService.getAll();
     }
 }

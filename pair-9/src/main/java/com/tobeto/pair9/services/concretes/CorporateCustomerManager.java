@@ -1,6 +1,10 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
+import com.tobeto.pair9.core.utilities.results.SuccessDataResult;
+import com.tobeto.pair9.core.utilities.results.SuccessResult;
 import com.tobeto.pair9.entities.concretes.CorporateCustomer;
 import com.tobeto.pair9.repositories.CorporateCustomerRepository;
 import com.tobeto.pair9.services.abstracts.CorporateCustomerService;
@@ -9,6 +13,7 @@ import com.tobeto.pair9.services.dtos.corporateCustomer.requests.UpdateCorporate
 import com.tobeto.pair9.services.dtos.corporateCustomer.responses.GetListCorporateCustomerResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,26 +25,27 @@ public class CorporateCustomerManager implements CorporateCustomerService {
     private final ModelMapperService modelMapperService;
 
     @Override
-    public List<GetListCorporateCustomerResponse> getAll() {
+    public DataResult<List<GetListCorporateCustomerResponse>> getAll() {
         List<CorporateCustomer> corporateCustomers = corporateCustomerRepository.findAll();
-        return corporateCustomers.stream().map(corporateCustomer -> this.modelMapperService.forResponse()
-                .map(corporateCustomer, GetListCorporateCustomerResponse.class)).collect(Collectors.toList());
+        return new SuccessDataResult(corporateCustomers.stream().map(corporateCustomer -> this.modelMapperService.forResponse()
+                .map(corporateCustomer, GetListCorporateCustomerResponse.class)).collect(Collectors.toList()),"Tüm data getirildi");
     }
 
     @Override
-    public void add(AddCorporateCustomerRequest request) {
+    public Result add(AddCorporateCustomerRequest request) {
         CorporateCustomer corporateCustomer=this.modelMapperService.forRequest()
                 .map(request,CorporateCustomer.class);
         this.corporateCustomerRepository.save(corporateCustomer);
+        return new SuccessResult("Eklendi");
     }
 
     @Override
-    public void update(UpdateCorporateCustomerRequest request) {
-
+    public Result update(UpdateCorporateCustomerRequest request) {
+        return new SuccessResult("Güncelledi");
     }
 
     @Override
-    public void delete(int id) {
-
+    public Result delete(int id) {
+        return new SuccessResult("Silindi");
     }
 }

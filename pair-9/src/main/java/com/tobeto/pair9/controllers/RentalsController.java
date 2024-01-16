@@ -1,5 +1,7 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
 import com.tobeto.pair9.services.abstracts.RentalService;
 import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
@@ -23,23 +25,23 @@ public class RentalsController {
     private RentalService rentalService;
 
     @GetMapping("/getAll")
-    public List<GetListRentalResponse> getAll(){
+    public DataResult<List<GetListRentalResponse>> getAll(){
         return rentalService.getAll();
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddRentalRequest request){
-        rentalService.add(request);
+    public Result add(@RequestBody @Valid AddRentalRequest request){
+        return rentalService.add(request);
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateRentalRequest request){
-        rentalService.update(request);
+    public Result update(@RequestBody @Valid UpdateRentalRequest request){
+        return rentalService.update(request);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
-        rentalService.delete(id);
+    public Result delete(@PathVariable int id){
+        return rentalService.delete(id);
     }
 }
