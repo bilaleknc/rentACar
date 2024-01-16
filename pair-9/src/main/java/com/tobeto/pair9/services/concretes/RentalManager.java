@@ -57,6 +57,11 @@ public class RentalManager implements RentalService {
     }
 
     @Override
+    public boolean existsId(int id){
+        return rentalRepository.existsById(id);
+    }
+
+    @Override
     public Result add(AddRentalRequest request) {
 
         checkId(request.getCarId(), request.getUserId());

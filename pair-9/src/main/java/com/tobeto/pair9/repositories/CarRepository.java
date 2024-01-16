@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface CarRepository extends JpaRepository<Car,Integer> {
 
     boolean existsCarByPlate (String plate);
+    boolean existsById (int id);
 }

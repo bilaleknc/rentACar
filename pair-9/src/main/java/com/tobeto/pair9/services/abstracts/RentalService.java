@@ -22,4 +22,6 @@ public interface RentalService {
 
     Result delete(int id);
     void checkId(int carId, int userId);
+
+    boolean existsId(int id);
 }
