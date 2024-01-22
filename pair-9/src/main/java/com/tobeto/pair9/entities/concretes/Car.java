@@ -31,6 +31,12 @@ public class Car extends BaseEntity {
     @Column(name = "min_findeks_rate")
     private short minFindeksRate;
 
+    @Column(name = "transmission_type")
+    private String transmissionType;
+
+    @Column(name = "fuel_type")
+    private String fuelType;
+
     @Column(name = "image_path")
     private String imagePath;
 
