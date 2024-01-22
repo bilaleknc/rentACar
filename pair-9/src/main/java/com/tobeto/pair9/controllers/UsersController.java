@@ -1,37 +1,40 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.services.JwtService;
 import com.tobeto.pair9.services.abstracts.UserService;
-import com.tobeto.pair9.services.dtos.user.requests.AddUserRequest;
-import com.tobeto.pair9.services.dtos.user.requests.UpdateUserRequest;
-import com.tobeto.pair9.services.dtos.user.responses.GetListUserResponse;
-import jakarta.validation.Valid;
+import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
+import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/users")
 public class UsersController {
-    private UserService userService;
 
-    @GetMapping("/getAll")
-    public List<GetListUserResponse> getAll(){
-        return userService.getAll();
+    private final UserService userService;
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    private void register(@RequestBody CreateUserRequest request){
+        userService.register(request);
     }
-    @PostMapping("/add")
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddUserRequest request){
-        userService.add(request);
-    }
-    @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateUserRequest request){
-        this.userService.update(request);
-    }
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable int id) {
-        userService.delete(id);
+
+    @PostMapping("login")
+    @ResponseStatus(HttpStatus.OK)
+    public String login(@RequestBody LoginRequest loginRequest){
+        //Aut Service taşınmalı
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));
+        if(authentication.isAuthenticated()){
+            return jwtService.generateToken(loginRequest.getUsername());
+        }
+        throw new RuntimeException("Kullanıcı adı yada şifra hatalı");
     }
 }
