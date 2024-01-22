@@ -1,23 +1,21 @@
 package com.tobeto.pair9.services.abstracts;
 
 import com.tobeto.pair9.services.dtos.user.requests.AddUserRequest;
+import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
+import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
 import com.tobeto.pair9.services.dtos.user.requests.UpdateUserRequest;
 import com.tobeto.pair9.services.dtos.user.responses.GetListUserResponse;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
-    List<GetListUserResponse> getAll();
+    void register(CreateUserRequest createUserRequest);
 
-    void add(AddUserRequest request);
-
-    void update(UpdateUserRequest request);
-
-    void delete(int id);
+    String login(LoginRequest loginRequest);
 
     boolean existsId(int id);
-
-    void entryCheck(String email);
 
 }
