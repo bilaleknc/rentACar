@@ -1,5 +1,6 @@
 package com.tobeto.pair9.services.dtos.model.responses;
 
+import com.tobeto.pair9.services.dtos.brand.responses.GetListBrandResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,5 @@ public class GetListModelResponse {
 
     private String name;
 
-    private int brandId;
+    private GetListBrandResponse brand;
 }

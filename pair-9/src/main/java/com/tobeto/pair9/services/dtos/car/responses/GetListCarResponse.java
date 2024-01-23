@@ -1,5 +1,7 @@
 package com.tobeto.pair9.services.dtos.car.responses;
 
+import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
+import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +23,8 @@ public class GetListCarResponse {
 
     private String imagePath;
 
-    private String modelName;
+    private GetListModelResponse model;
 
-    private String colorName;
+    private GetListColorResponse color;
 
 }
