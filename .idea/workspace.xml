@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="649eb281-5850-4d91-9c9b-8394bedfc6d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/configurations/ApplicationConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/configurations/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/services/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/dtos/user/requests/CreateUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/entities/concretes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/entities/concretes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/abstracts/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/abstracts/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/concretes/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/concretes/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +23,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -43,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Victus/Desktop/yenirepo/pair-9",
+    "last_opened_file_path": "C:/Users/Victus/Desktop/dev-bilal-spring/pair-9",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,6 +108,7 @@
       <workItem from="1702580291198" duration="2229000" />
       <workItem from="1702629789706" duration="2893000" />
       <workItem from="1704913170131" duration="78000" />
+      <workItem from="1705919396343" duration="292000" />
     </task>
     <servers />
   </component>
