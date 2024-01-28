@@ -1,5 +1,6 @@
 package com.tobeto.pair9.services.concretes;
 
+import com.tobeto.pair9.entities.concretes.Role;
 import com.tobeto.pair9.entities.concretes.User;
 import com.tobeto.pair9.repositories.UserRepository;
 import com.tobeto.pair9.services.abstracts.UserService;
@@ -27,7 +28,7 @@ public class UserManager implements UserService {
         User user = User.builder()
                 .username(createUserRequest.getUsername())
                 .email(createUserRequest.getEmail())
-                .authorities(createUserRequest.getRoles())
+                .role("USER")
                 .password(passwordEncoder.encode(createUserRequest.getPassword()))
                 .build();
         userRepository.save(user);
