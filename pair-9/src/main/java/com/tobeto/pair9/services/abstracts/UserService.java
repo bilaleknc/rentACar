@@ -12,10 +12,6 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    void register(CreateUserRequest createUserRequest);
 
-    String login(LoginRequest loginRequest);
-
-    boolean existsId(int id);
 
 }
