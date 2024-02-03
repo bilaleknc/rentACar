@@ -1,8 +1,7 @@
 package com.tobeto.pair9.services.dtos.car.responses;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Positive;
+import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
+import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,16 +11,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListCarResponse {
 
-    private int kilometer;
+    private Long kilometer;
 
     private String plate;
 
-    private int year;
+    private short modelYear;
 
-    private double dailyPrice;
+    private Float dailyPrice;
 
-    private String modelName;
+    private short minFindeksRate;
 
-    private String colorName;
+    private String imagePath;
+
+    private GetListModelResponse model;
+
+    private GetListColorResponse color;
 
 }

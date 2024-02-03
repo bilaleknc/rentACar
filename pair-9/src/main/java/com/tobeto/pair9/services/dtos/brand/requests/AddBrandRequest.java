@@ -10,6 +10,9 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 
 public class AddBrandRequest {
+
     @Length(min=2,message = "The brand name must be at least 2 character")
     private String name;
+
+    private String logoPath;
 }

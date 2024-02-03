@@ -1,12 +1,16 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.entities.Color;
-import com.tobeto.pair9.entities.Model;
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
+import com.tobeto.pair9.core.utilities.results.SuccessDataResult;
+import com.tobeto.pair9.core.utilities.results.SuccessResult;
+import com.tobeto.pair9.entities.concretes.Brand;
+import com.tobeto.pair9.entities.concretes.Model;
 import com.tobeto.pair9.repositories.ModelRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
 import com.tobeto.pair9.services.abstracts.ModelService;
-import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
+import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair9.services.dtos.model.requests.AddModelRequest;
 import com.tobeto.pair9.services.dtos.model.requests.UpdateModelRequest;
 import com.tobeto.pair9.services.dtos.model.responses.GetListModelResponse;
@@ -14,7 +18,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,36 +29,41 @@ public class ModelManager implements ModelService {
 
 
     @Override
-    public List<GetListModelResponse> getAll() {
+    public DataResult<List<GetListModelResponse>> getAll() {
         List<Model> models = modelRepository.findAll();
-        return models.stream().map(model -> this.modelMapperService.forResponse().map(model, GetListModelResponse.class))
-                .collect(Collectors.toList());
+        return new SuccessDataResult(models.stream().map(model -> this.modelMapperService.forResponse().map(model, GetListModelResponse.class))
+                .collect(Collectors.toList()),"Tüm veriler eklendi");
     }
 
     @Override
-    public void add(AddModelRequest request) {
+    public Result add(AddModelRequest request) {
         if(modelRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
+            throw new RuntimeException("There cannot be same model");
         }
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
-
+        return new SuccessResult("Eklendi");
     }
 
     @Override
-    public void update(UpdateModelRequest request) {
+    public Result update(UpdateModelRequest request) {
         if(modelRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
+            throw new RuntimeException("There cannot be same model");
         }
         Model model = this.modelMapperService.forRequest().map(request,Model.class);
         this.modelRepository.save(model);
-
-
+        return new SuccessResult("Güncellendi");
     }
 
     @Override
-    public void delete(int id) {
+    public Result delete(int id) {
         this.modelRepository.deleteById(id);
-
+        return new SuccessResult("Silindi");
     }
+
+    @Override
+    public boolean existsId(int id) {
+        return modelRepository.existsById(id);
+    }
+
 }

@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="649eb281-5850-4d91-9c9b-8394bedfc6d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/rentACar-main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pair9son.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/carController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/carController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/configurations/ApplicationConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/configurations/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/core/services/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/dtos/user/requests/CreateUserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/UsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/controllers/UsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/entities/concretes/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/entities/concretes/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/abstracts/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/abstracts/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/concretes/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/java/com/tobeto/pair9/services/concretes/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pair-9/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pair-9/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -52,8 +57,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/Users/ozanz/intelij-projects/rentACar-main",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Victus/Desktop/dev-bilal-spring/pair-9",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,8 +79,10 @@
   </component>
   <component name="RunManager">
     <configuration name="Pair9Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="pair-9" />
+      <module name="pair9clone" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.tobeto.pair9.Pair9Application" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -99,6 +106,9 @@
       <workItem from="1702578918635" duration="902000" />
       <workItem from="1702579862408" duration="200000" />
       <workItem from="1702580291198" duration="2229000" />
+      <workItem from="1702629789706" duration="2893000" />
+      <workItem from="1704913170131" duration="78000" />
+      <workItem from="1705919396343" duration="292000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,7 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.DataResult;
+import com.tobeto.pair9.core.utilities.results.Result;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
@@ -15,32 +17,33 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/cars")
+@CrossOrigin
 public class CarsController {
 
     private CarService carService;
 
     @GetMapping("/getAll")
-    public List<GetListCarResponse> getAll(){
+    public DataResult<List<GetListCarResponse>> getAll(){
         return carService.getAll();
     }
     @GetMapping("/getById/{id}")
-    public GetByIdCarResponse getById(@PathVariable int id){
+    public DataResult<GetByIdCarResponse> getById(@PathVariable int id){
         return carService.getById(id);
     }
 
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddCarRequest request){
-        carService.add(request);
+    public Result add(@RequestBody @Valid AddCarRequest request){
+        return carService.add(request);
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateCarRequest request){
-        this.carService.update(request);
+    public Result update(@RequestBody @Valid UpdateCarRequest request){
+        return this.carService.update(request);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
-        carService.delete(id);
+    public Result delete(@PathVariable int id){
+        return carService.delete(id);
     }
 }
