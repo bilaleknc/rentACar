@@ -1,5 +1,5 @@
 # Java 19 base image
-FROM openjdk:19
+FROM openjdk:19-alpine
 
 # Port 8080 will be exposed for the web server
 EXPOSE 8080
