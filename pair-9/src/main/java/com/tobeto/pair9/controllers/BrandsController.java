@@ -38,5 +38,4 @@ public class BrandsController {
         return brandService.delete(id);
     }
 
-
 }

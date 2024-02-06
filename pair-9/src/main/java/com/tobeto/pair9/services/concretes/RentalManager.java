@@ -52,8 +52,8 @@ public class RentalManager implements RentalService {
     public void checkId(int carId, int userId){
         if (!carService.existsId(carId))
             throw new RuntimeException("There is no car in the given id.");
-        if (!userService.existsId(userId))
-            throw new RuntimeException("There is no user in the given id");
+   /*     if (!userService.existsId(userId))
+            throw new RuntimeException("There is no user in the given id");*/
     }
 
     @Override
