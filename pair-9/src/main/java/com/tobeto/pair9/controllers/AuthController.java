@@ -1,6 +1,7 @@
 package com.tobeto.pair9.controllers;
 
 import com.tobeto.pair9.services.abstracts.AuthService;
+import com.tobeto.pair9.services.dtos.auth.responses.TokenResponse;
 import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
 import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,16 @@ public class AuthController {
 
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public String login(@RequestBody LoginRequest loginRequest){
+    public TokenResponse login(@RequestBody LoginRequest loginRequest){
         return authService.login(loginRequest);
     }
+
+    @PostMapping("/refreshToken")
+    @ResponseStatus(HttpStatus.OK)
+    public String refreshToken(@RequestHeader String refreshToken){
+        System.out.println("refreshToken!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println("refreshToken " + refreshToken);
+        return authService.refreshToken(refreshToken);
+    }
+
 }

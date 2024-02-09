@@ -4,9 +4,11 @@ import com.tobeto.pair9.core.services.JwtService;
 import com.tobeto.pair9.entities.concretes.User;
 import com.tobeto.pair9.repositories.UserRepository;
 import com.tobeto.pair9.services.abstracts.AuthService;
+import com.tobeto.pair9.services.dtos.auth.responses.TokenResponse;
 import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
 import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
 import lombok.AllArgsConstructor;
+import org.antlr.v4.runtime.Token;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -38,13 +40,28 @@ public class AuthManager implements AuthService {
     }
 
     @Override
-    public String login(LoginRequest loginRequest) {
+    public TokenResponse login(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(), loginRequest.getPassword()));
         if (authentication.isAuthenticated()){
-            return jwtService.generateToken(loginRequest.getUserName());
+            var user = userRepository.findByUsername(loginRequest.getUserName()).orElseThrow(()-> new RuntimeException("Kullanıcı bulunamadı"));
+            String accessToken = jwtService.generateToken(user);
+            String refreshToken = jwtService.generateRefreshToken(user);
+            return new TokenResponse(accessToken, refreshToken);
         }
-        throw new RuntimeException("Kullanıcı adı ya da şifre yanlış");
+        return null;
+    }
+
+    @Override
+    public String refreshToken(String refreshToken) {
+        String userName = jwtService.extractUser(refreshToken);
+        String token = jwtService.extractToken(refreshToken);
+        if (!jwtService.validateToken(token, userName)){
+            throw new RuntimeException("Token geçerli değil");
+        }
+        System.out.println("userName !!!!!!!!!!!!!!!!!!!!" + userName);
+        User user = userRepository.findByUsername(userName).orElseThrow(()-> new RuntimeException("Kullanıcı bulunamadı"));
+        return jwtService.generateToken(user);
     }
 
     @Override

@@ -12,6 +12,4 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-
-
 }
