@@ -1,6 +1,12 @@
 # Java 19 base image
 FROM openjdk:19-alpine
 
+# Set the working directory
+WORKDIR /app
+
+# Add a volume pointing to /app
+VOLUME /app
+
 # Port 8080 will be exposed for the web server
 EXPOSE 8080
 

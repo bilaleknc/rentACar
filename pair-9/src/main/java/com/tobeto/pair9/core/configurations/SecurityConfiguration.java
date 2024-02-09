@@ -38,6 +38,7 @@ public class SecurityConfiguration {
             "/v3/api-docs",
             "/v3/api-docs/**",
             "/api/users/**",
+            "/api/auth/login",
             "**" // tüm endpointlere erişim izni verir
     };
 
