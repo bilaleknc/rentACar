@@ -6,15 +6,17 @@ import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
 import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@AllArgsConstructor
 @CrossOrigin
+@AllArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
+
     @PostMapping("/signUp")
     @ResponseStatus(HttpStatus.CREATED)
     private void register(@RequestBody CreateUserRequest request){
@@ -28,11 +30,16 @@ public class AuthController {
     }
 
     @PostMapping("/refreshToken")
-    @ResponseStatus(HttpStatus.OK)
-    public String refreshToken(@RequestHeader String refreshToken){
-        System.out.println("refreshToken!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println("refreshToken " + refreshToken);
-        return authService.refreshToken(refreshToken);
+    public ResponseEntity<?> refreshToken(@RequestParam("userName") String userName) {
+        return ResponseEntity.ok(authService.refreshToken(userName));
     }
+
+    // Logout işlemi için endpoint
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestParam("userName") String userName) {
+        authService.logout(userName);
+        return ResponseEntity.ok().body("Logout successful");
+    }
+
 
 }

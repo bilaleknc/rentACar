@@ -31,7 +31,6 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "email")
     private String email;
 
-
     @Column(name = "role")
     private String role;
 
