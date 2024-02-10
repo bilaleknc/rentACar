@@ -17,17 +17,17 @@ public class GlobalExceptionHandler {
         return "Validation Error";
     }
 
-    @ExceptionHandler({RuntimeException.class})
+/*    @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String handleRuntimeException(RuntimeException exception)
     {
         return exception.getMessage();
-    }
+    }*/
 
-    @ExceptionHandler({Exception.class})
+/*    @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String handleError(Exception exception)
     {
         return "Unknown Error";
-    }
+    }*/
 }

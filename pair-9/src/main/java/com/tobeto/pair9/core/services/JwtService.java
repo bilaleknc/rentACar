@@ -41,7 +41,7 @@ public class JwtService {
         return username.equals(extractUser(token)) && !expirationDate.before(new Date());
     }
 
-    private Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         Claims claims = Jwts
                 .parser()
                 .setSigningKey(getSigningKey())
@@ -75,7 +75,7 @@ public class JwtService {
                 .compact();
     }
 
-    private String createToken(Map<String, Object> claims, User user) {
+    public String createToken(Map<String, Object> claims, User user) {
         return Jwts.builder()
                 .setClaims(claims)
                 .claim("id", user.getId())
@@ -100,7 +100,7 @@ public class JwtService {
                 .claim("role", user.getRole())
                 .setSubject(user.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + (EXPIRATION * 2)))
+                .setExpiration(new Date(System.currentTimeMillis() + (EXPIRATION * 10)))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
