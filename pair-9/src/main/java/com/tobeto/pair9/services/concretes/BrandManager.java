@@ -13,6 +13,7 @@ import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair9.services.dtos.brand.responses.GetListBrandResponse;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+
 public class BrandManager implements BrandService {
     private BrandRepository brandRepository;
     private ModelMapperService modelMapperService;
