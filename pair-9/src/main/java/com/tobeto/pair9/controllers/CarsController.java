@@ -1,7 +1,6 @@
 package com.tobeto.pair9.controllers;
 
-import com.tobeto.pair9.core.utilities.results.DataResult;
-import com.tobeto.pair9.core.utilities.results.Result;
+import com.tobeto.pair9.core.utilities.results.BaseResult;
 import com.tobeto.pair9.services.abstracts.CarService;
 import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
@@ -10,6 +9,7 @@ import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,32 +18,44 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cars")
 @CrossOrigin
+@PreAuthorize("hasRole('ADMIN') and hasRole('USER')")
 public class CarsController {
 
-    private CarService carService;
+    private final CarService carService;
+
 
     @GetMapping("/getAll")
-    public DataResult<List<GetListCarResponse>> getAll(){
+    @PreAuthorize("hasAuthority('admin:read') and hasRole('USER')")
+    public BaseResult<List<GetListCarResponse>> getAll(){
         return carService.getAll();
     }
+
+
     @GetMapping("/getById/{id}")
-    public DataResult<GetByIdCarResponse> getById(@PathVariable int id){
+    @PreAuthorize("hasAuthority('admin:read')")
+    public BaseResult<GetByIdCarResponse> getById(@PathVariable Integer id){
         return carService.getById(id);
     }
 
+
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Result add(@RequestBody @Valid AddCarRequest request){
+    @PreAuthorize("hasAuthority('admin:add')")
+    public BaseResult add(@RequestBody @Valid AddCarRequest request){
         return carService.add(request);
     }
 
+
     @PutMapping("/update")
-    public Result update(@RequestBody @Valid UpdateCarRequest request){
+    @PreAuthorize("hasAuthority('admin:update')")
+    public BaseResult update(@RequestBody @Valid UpdateCarRequest request){
         return this.carService.update(request);
     }
 
+
     @DeleteMapping("{id}")
-    public Result delete(@PathVariable int id){
+    @PreAuthorize("hasAuthority('admin:delete')")
+    public BaseResult delete(@PathVariable Integer id){
         return carService.delete(id);
     }
 }

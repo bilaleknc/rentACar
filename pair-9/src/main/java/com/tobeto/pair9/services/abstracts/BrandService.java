@@ -1,8 +1,6 @@
 package com.tobeto.pair9.services.abstracts;
 
-import com.tobeto.pair9.core.utilities.results.DataResult;
-import com.tobeto.pair9.core.utilities.results.Result;
-import com.tobeto.pair9.entities.concretes.Brand;
+import com.tobeto.pair9.core.utilities.results.BaseResult;
 import com.tobeto.pair9.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;
@@ -12,13 +10,15 @@ import java.util.List;
 
 public interface BrandService {
 
-    DataResult<GetByIdBrandResponse> getById(int id);
+    BaseResult<GetByIdBrandResponse> getById(Integer id);
 
-    DataResult<List<GetListBrandResponse>> getAll();
+    BaseResult<List<GetListBrandResponse>> getAll();
 
-    Result add(AddBrandRequest request);
+    BaseResult add(AddBrandRequest request);
 
-    Result update(UpdateBrandRequest request);
+    BaseResult update(UpdateBrandRequest request);
 
-    Result delete(int id);
+    BaseResult delete(Integer id);
+
+    boolean isExistBrandById(Integer id);
 }

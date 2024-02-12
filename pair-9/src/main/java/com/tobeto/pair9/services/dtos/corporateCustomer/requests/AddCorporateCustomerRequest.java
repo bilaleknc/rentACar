@@ -13,6 +13,6 @@ public class AddCorporateCustomerRequest {
 
     private String taxNo;
 
-    private int userId;
+    private Integer userId;
 
 }

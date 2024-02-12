@@ -1,63 +1,57 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.core.utilities.results.DataResult;
-import com.tobeto.pair9.core.utilities.results.Result;
-import com.tobeto.pair9.core.utilities.results.SuccessDataResult;
-import com.tobeto.pair9.core.utilities.results.SuccessResult;
+import com.tobeto.pair9.core.utilities.results.*;
 import com.tobeto.pair9.entities.concretes.Color;
 import com.tobeto.pair9.repositories.ColorRepository;
 import com.tobeto.pair9.services.abstracts.ColorService;
 import com.tobeto.pair9.services.dtos.color.requests.AddColorRequest;
 import com.tobeto.pair9.services.dtos.color.requests.UpdateColorRequest;
 import com.tobeto.pair9.services.dtos.color.responses.GetListColorResponse;
+import com.tobeto.pair9.services.rules.ColorBusinessRules;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ColorManager implements ColorService {
-    private ColorRepository colorRepository;
-    private ModelMapperService modelMapperService;
-
+    private final ColorRepository colorRepository;
+    private final ModelMapperService modelMapperService;
+    private final ColorBusinessRules colorBusinessRules;
     @Override
-    public DataResult<List<GetListColorResponse>> getAll() {
+    public BaseResult<List<GetListColorResponse>> getAll() {
         List<Color> colors = colorRepository.findAll();
-        return new SuccessDataResult(colors.stream().map(color -> this.modelMapperService.forResponse().map(color,GetListColorResponse.class))
-                .collect(Collectors.toList()), "Tüm data getirildi");
+        var result = colors.stream().map(color -> this.modelMapperService.forResponse().map(color,GetListColorResponse.class)).toList();
+        return new BaseResult<>(true,result);
     }
 
     @Override
-    public Result add(AddColorRequest request) {
-        if(colorRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
-        }
+    public BaseResult add(AddColorRequest request) {
+        colorBusinessRules.isExistColorByName(request.getName());
+        Color color = this.modelMapperService.forRequest().map(request,Color.class);
+        color.setId(null);
+        this.colorRepository.save(color);
+        return new BaseResult<>(true, Messages.colorAdded);
+    }
+
+    @Override
+    public BaseResult update(UpdateColorRequest request) {
+        colorBusinessRules.isExistColorById(request.getId());
         Color color = this.modelMapperService.forRequest().map(request,Color.class);
         this.colorRepository.save(color);
-        return new SuccessResult("Eklendi");
+        return new BaseResult<>(true, Messages.colorUpdated);
     }
 
     @Override
-    public Result update(UpdateColorRequest request) {
-        if(colorRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same color");
-        }
-        Color color = this.modelMapperService.forRequest().map(request,Color.class);
-        this.colorRepository.save(color);
-        return new SuccessResult("Gncellendi");
-    }
-
-    @Override
-    public Result delete(int id) {
+    public BaseResult delete(int id) {
         this.colorRepository.deleteById(id);
-        return new SuccessResult("Silindi");
+        return new BaseResult<>(true,Messages.colorDeleted);
     }
 
     @Override
-    public boolean existsId(int id) {
+    public boolean isExistColorById(Integer id) {
         return colorRepository.existsById(id);
     }
 }

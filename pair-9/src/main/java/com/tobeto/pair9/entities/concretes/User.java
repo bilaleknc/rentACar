@@ -1,5 +1,6 @@
 package com.tobeto.pair9.entities.concretes;
 
+import com.tobeto.pair9.core.token.Token;
 import com.tobeto.pair9.entities.absracts.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,8 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.Collection;
 import java.util.List;
@@ -21,7 +22,6 @@ import java.util.List;
 @Builder
 public class User extends BaseEntity implements UserDetails {
 
-
     @Column(name = "username")
     private String username;
 
@@ -31,13 +31,20 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "email")
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @Column(name = "role")
-    private String role;
+    @OneToMany(mappedBy = "user")
+    private List<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return role.getAuthorities();
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 
     @Override

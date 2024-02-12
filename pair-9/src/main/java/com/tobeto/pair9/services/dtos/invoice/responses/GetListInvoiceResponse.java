@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListInvoiceResponse {
 
-    private int id;
+    private Integer id;
 
     private String invoiceNo;
 

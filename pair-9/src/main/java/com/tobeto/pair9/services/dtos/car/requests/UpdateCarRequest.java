@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class UpdateCarRequest {
 
     @Positive(message = "Id must be greater than zero")
-    private int id;
+    private Integer id;
 
     @Positive(message = "Km must be greater than zero")
     private Long kilometer;
@@ -31,8 +31,8 @@ public class UpdateCarRequest {
     private String imagePath;
 
     @Positive(message = "Id must be greater than zero")
-    private int modelId;
+    private Integer modelId;
 
     @Positive(message = "Id must be greater than zero")
-    private int colorId;
+    private Integer colorId;
 }

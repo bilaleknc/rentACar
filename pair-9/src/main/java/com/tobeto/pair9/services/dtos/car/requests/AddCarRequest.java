@@ -29,8 +29,8 @@ public class AddCarRequest {
     private double dailyPrice;
 
     @Positive
-    private int modelId;
+    private Integer modelId;
 
     @Positive
-    private int colorId;
+    private Integer colorId;
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateCustomerRequest {
 
-    private int id;
+    private Integer id;
 
     private String identityNumber;
 
@@ -17,5 +17,5 @@ public class UpdateCustomerRequest {
 
     private String lastName;
 
-    private int userId;
+    private Integer userId;
 }

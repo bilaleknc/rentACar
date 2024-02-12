@@ -15,5 +15,5 @@ public class AddCustomerRequest {
 
     private String lastName;
 
-    private int userId;
+    private Integer userId;
 }

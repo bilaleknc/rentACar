@@ -18,5 +18,5 @@ public class AddInvoiceRequest {
 
     private Float taxRate;
 
-    private int rentalId;
+    private Integer rentalId;
 }

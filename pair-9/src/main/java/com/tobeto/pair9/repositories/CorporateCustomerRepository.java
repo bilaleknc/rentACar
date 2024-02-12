@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CorporateCustomerRepository extends JpaRepository<CorporateCustomer,Integer> {
 
-    boolean existsByCompanyName(String name);
-
-    boolean existsByTaxNo(String taxNo);
+    boolean existsCorporateCustomerByCompanyName(String name);
 
 }

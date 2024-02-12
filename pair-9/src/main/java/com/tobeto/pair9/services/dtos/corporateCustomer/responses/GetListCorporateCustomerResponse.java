@@ -9,8 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListCorporateCustomerResponse {
 
-    private int id;
+    private Integer id;
+
     private String companyName;
+
     private String taxNo;
-    private int userId;
+
+    private Integer userId;
 }

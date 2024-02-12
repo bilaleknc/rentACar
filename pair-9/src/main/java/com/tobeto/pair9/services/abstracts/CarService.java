@@ -1,29 +1,25 @@
 package com.tobeto.pair9.services.abstracts;
 
-import com.tobeto.pair9.core.utilities.results.DataResult;
-import com.tobeto.pair9.core.utilities.results.Result;
-import com.tobeto.pair9.entities.concretes.Car;
+import com.tobeto.pair9.core.utilities.results.BaseResult;
 import com.tobeto.pair9.services.dtos.car.requests.AddCarRequest;
 import com.tobeto.pair9.services.dtos.car.requests.UpdateCarRequest;
 import com.tobeto.pair9.services.dtos.car.responses.GetByIdCarResponse;
 import com.tobeto.pair9.services.dtos.car.responses.GetListCarResponse;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface CarService{
 
-    DataResult<List<GetListCarResponse>> getAll();
+    BaseResult<List<GetListCarResponse>> getAll();
 
-    DataResult<GetByIdCarResponse> getById(int id);
+    BaseResult<GetByIdCarResponse> getById(Integer id);
 
-    Result add(AddCarRequest request);
+    BaseResult add(AddCarRequest request);
 
-    Result update(UpdateCarRequest request);
+    BaseResult update(UpdateCarRequest request);
 
-    Result delete(int id);
+    BaseResult delete(Integer id);
 
-    boolean existsId(int id);
+    boolean isExistById(Integer id);
 
-    void entryCheck(String plate, int modelId, int colorId);
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateInvoiceRequest {
 
-    private int id;
+    private Integer id;
 
     private String invoiceNo;
 
@@ -19,5 +19,5 @@ public class UpdateInvoiceRequest {
 
     private Float taxRate;
 
-    private int rentalId;
+    private Integer rentalId;
 }

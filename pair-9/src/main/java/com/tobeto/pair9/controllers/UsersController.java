@@ -1,41 +1,53 @@
 package com.tobeto.pair9.controllers;
 
-import com.tobeto.pair9.core.services.JwtService;
+import com.tobeto.pair9.core.utilities.results.BaseResult;
 import com.tobeto.pair9.services.abstracts.UserService;
-import com.tobeto.pair9.services.dtos.user.requests.CreateUserRequest;
-import com.tobeto.pair9.services.dtos.user.requests.LoginRequest;
+import com.tobeto.pair9.services.dtos.user.requests.AddUserRequest;
+import com.tobeto.pair9.services.dtos.user.requests.UpdateUserRequest;
+import com.tobeto.pair9.services.dtos.user.responses.GetListUserResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin
+@PreAuthorize("hasRole('ADMIN')")
 public class UsersController {
 
     private final UserService userService;
-    private final AuthenticationManager authenticationManager;
-    private final JwtService jwtService;
 
-    @PostMapping("/signUp")
-    @ResponseStatus(HttpStatus.CREATED)
-    private void register(@RequestBody CreateUserRequest request){
-        userService.register(request);
+    @GetMapping("/getAll")
+    @PreAuthorize("hasAuthority('admin:read')")
+    public BaseResult<List<GetListUserResponse>> getAll(){
+        return userService.getAll();
     }
 
-    @PostMapping("/login")
-    @ResponseStatus(HttpStatus.OK)
-    public String login(@RequestBody LoginRequest loginRequest){
-        //Aut Service taşınmalı
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(),loginRequest.getPassword()));
-        if(authentication.isAuthenticated()){
-            return jwtService.generateToken(loginRequest.getUserName());
-        }
-        throw new RuntimeException("Kullanıcı adı yada şifra hatalı");
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('admin:add')")
+    public BaseResult add(@RequestBody @Valid AddUserRequest request){
+        return userService.add(request);
+    }
+
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('admin:update')")
+    public BaseResult update(@RequestBody @Valid UpdateUserRequest request){
+        return userService.update(request);
+    }
+
+
+    @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('admin:delete')")
+    public BaseResult delete(@PathVariable Integer id){
+        return userService.delete(id);
     }
 }
