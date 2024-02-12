@@ -8,8 +8,6 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Integer> {
 
     boolean existsInvoiceByInvoiceNo(String invoiceNo);
 
-
-
 }
 
 

@@ -12,12 +12,12 @@ import org.hibernate.validator.constraints.Length;
 
 public class UpdateModelRequest {
     @Positive(message = "Id must be greater than zero")
-    private int id;
+    private Integer id;
 
     @Length(min=2,message = "The model name must be at least 2 character")
     private String name;
 
     @Positive(message = "Id must be greater than zero")
-    private int brandId;
+    private Integer brandId;
 
 }

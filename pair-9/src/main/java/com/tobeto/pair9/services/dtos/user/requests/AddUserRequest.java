@@ -12,6 +12,10 @@ public class AddUserRequest {
 
     @NotNull
     private String email;
+
+    @NotNull
+    private String username;
+
     @NotNull
     private String password;
 }

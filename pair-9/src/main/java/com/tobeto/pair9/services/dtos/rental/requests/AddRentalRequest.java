@@ -23,7 +23,7 @@ public class AddRentalRequest {
 
     private Long endKilometer;
 
-    private int carId;
+    private Integer carId;
 
-    private int userId;
+    private Integer userId;
 }

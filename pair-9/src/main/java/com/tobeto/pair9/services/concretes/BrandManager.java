@@ -1,10 +1,8 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.utilities.mappers.ModelMapperService;
-import com.tobeto.pair9.core.utilities.results.DataResult;
-import com.tobeto.pair9.core.utilities.results.Result;
-import com.tobeto.pair9.core.utilities.results.SuccessDataResult;
-import com.tobeto.pair9.core.utilities.results.SuccessResult;
+import com.tobeto.pair9.core.utilities.results.BaseResponse;
+import com.tobeto.pair9.core.utilities.results.Messages;
 import com.tobeto.pair9.entities.concretes.Brand;
 import com.tobeto.pair9.repositories.BrandRepository;
 import com.tobeto.pair9.services.abstracts.BrandService;
@@ -12,59 +10,61 @@ import com.tobeto.pair9.services.dtos.brand.requests.AddBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.requests.UpdateBrandRequest;
 import com.tobeto.pair9.services.dtos.brand.responses.GetByIdBrandResponse;
 import com.tobeto.pair9.services.dtos.brand.responses.GetListBrandResponse;
+import com.tobeto.pair9.services.rules.BrandBusinessRules;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 
 public class BrandManager implements BrandService {
-    private BrandRepository brandRepository;
-    private ModelMapperService modelMapperService;
+    private final BrandRepository brandRepository;
+    private final ModelMapperService modelMapperService;
+    private final BrandBusinessRules brandBusinessRules;
 
     @Override
-    public DataResult<GetByIdBrandResponse> getById(int id) {
+    public BaseResponse<GetByIdBrandResponse> getById(Integer id) {
         Brand brand = this.brandRepository.findById(id).orElseThrow();
         GetByIdBrandResponse response = this.modelMapperService.forResponse().map(brand, GetByIdBrandResponse.class);
-
-        return new SuccessDataResult(response, "Id ile getirildi");
+        return new BaseResponse<>(true, response);
     }
 
     @Override
-    public DataResult<List<GetListBrandResponse>> getAll() {
+    public BaseResponse<List<GetListBrandResponse>> getAll() {
         List<Brand> brands = brandRepository.findAll();
-        return new SuccessDataResult(brands.stream()
-                .map(brand -> this.modelMapperService.forResponse().map(brand, GetListBrandResponse.class)).toList(),
-                "Tüm data getirildi");
+        var result =   brands.stream()
+                .map(brand -> this.modelMapperService.forResponse().map(brand, GetListBrandResponse.class)).toList();
+        return new BaseResponse<>(true,result);
     }
 
     @Override
-    public Result add(AddBrandRequest request) {
-        if(brandRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same brand");
-        }
-       Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
+    public BaseResponse add(AddBrandRequest request) {
+        brandBusinessRules.isExistBrandByName(request.getName());
+        Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
+        brand.setId(null);
         this.brandRepository.save(brand);
-        return new SuccessResult("Eklendi");
+        return new BaseResponse<>(true, Messages.brandAdded);
     }
 
     @Override
-    public Result update(UpdateBrandRequest request) {
-        if(brandRepository.existsByName(request.getName())){
-            throw new RuntimeException("There cannot be same brand");
-        }
+    public BaseResponse update(UpdateBrandRequest request) {
+        brandBusinessRules.isExistBrandById(request.getId());
         Brand brand = this.modelMapperService.forRequest().map(request,Brand.class);
         this.brandRepository.save(brand);
-        return new SuccessResult("Güncellendi");
+        return new BaseResponse<>(true, Messages.brandUpdated);
     }
 
     @Override
-    public Result delete(int id) {
+    public BaseResponse delete(Integer id) {
         this.brandRepository.deleteById(id);
-        return new SuccessResult("Silindi");
+        return new BaseResponse<>(true, Messages.brandDeleted);
+    }
+
+    @Override
+    public boolean isExistBrandById(Integer id) {
+        return brandRepository.existsById(id);
     }
 }
