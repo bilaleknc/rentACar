@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Length;
 public class UpdateColorRequest {
 
     @Positive(message = "Id must be greater than zero")
-    private int id;
+    private Integer id;
 
     private String code;
 

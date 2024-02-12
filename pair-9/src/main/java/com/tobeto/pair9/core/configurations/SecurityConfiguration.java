@@ -1,7 +1,6 @@
 package com.tobeto.pair9.core.configurations;
 
 import com.tobeto.pair9.core.filters.JwtAuthFilter;
-import com.tobeto.pair9.entities.concretes.Role;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -10,8 +10,9 @@ import org.hibernate.validator.constraints.Length;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateBrandRequest {
+
     @Positive(message = "Id must be greater than zero")
-    private int id;
+    private Integer id;
 
     private String logoPath;
 

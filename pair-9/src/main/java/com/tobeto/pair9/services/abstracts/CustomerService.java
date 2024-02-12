@@ -1,5 +1,6 @@
 package com.tobeto.pair9.services.abstracts;
 
+import com.tobeto.pair9.core.utilities.results.BaseResponse;
 import com.tobeto.pair9.services.dtos.customer.requests.AddCustomerRequest;
 import com.tobeto.pair9.services.dtos.customer.requests.UpdateCustomerRequest;
 import com.tobeto.pair9.services.dtos.customer.responses.GetListCustomerResponse;
@@ -8,16 +9,14 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<GetListCustomerResponse> getAll();
+    BaseResponse<List<GetListCustomerResponse>> getAll();
 
-    void add(AddCustomerRequest request);
+    BaseResponse add(AddCustomerRequest request);
 
-    void update(UpdateCustomerRequest request);
+    BaseResponse update(UpdateCustomerRequest request);
 
-    void delete(int id);
+    BaseResponse delete(Integer id);
 
-    boolean existsId(int id);
-
-    void entryCheck(String identityNumber, int userId);
+    boolean isExistCustomerById(Integer id);
 
 }
