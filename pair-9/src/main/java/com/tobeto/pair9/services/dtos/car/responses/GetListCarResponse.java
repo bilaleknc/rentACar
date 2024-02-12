@@ -13,20 +13,34 @@ public class GetListCarResponse {
 
     private Integer id;
 
-    private Long kilometer;
+    private Integer  kilometer;
 
     private String plate;
 
-    private short modelYear;
+    private int year;
 
-    private Float dailyPrice;
+    private double dailyPrice;
+
+    private Float depositPrice;
 
     private short minFindeksRate;
 
+    private String transmissionType;
+
+    private String fuelType;
+
+    private boolean airbag;
+
+    private Integer drivingLicenceAge;
+
+    private Integer minCustomerAge;
+
+    private Integer seatCapasity;
+
     private String imagePath;
 
-    private GetListModelResponse model;
+    private String  modelName;
 
-    private GetListColorResponse color;
+    private String colorName;
 
 }

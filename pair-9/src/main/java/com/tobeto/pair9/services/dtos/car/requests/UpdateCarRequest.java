@@ -15,6 +15,7 @@ public class UpdateCarRequest {
 
     @Positive(message = "Km must be greater than zero")
     private Long kilometer;
+
     @NotBlank(message = "Plate cannot null!")
     @Pattern(regexp = "^(0[1-9]|[1-8][0-9]|9[0-8])[A-Z\s]{1,3}\\d{2,4}$", message = "Invalid Turkish license plate format!")
     private String plate;
@@ -26,7 +27,21 @@ public class UpdateCarRequest {
     @Positive(message = "Price must be greater than zero")
     private Float dailyPrice;
 
+    private Float depositPrice;
+
     private short minFindeksRate;
+
+    private String transmissionType;
+
+    private String fuelType;
+
+    private boolean airbag;
+
+    private Integer drivingLicenceAge;
+
+    private Integer minCustomerAge;
+
+    private Integer seatCapasity;
 
     private String imagePath;
 

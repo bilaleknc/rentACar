@@ -1,6 +1,6 @@
 package com.tobeto.pair9.controllers;
 
-import com.tobeto.pair9.core.utilities.results.BaseResult;
+import com.tobeto.pair9.core.utilities.results.BaseResponse;
 import com.tobeto.pair9.services.abstracts.ColorService;
 import com.tobeto.pair9.services.dtos.color.requests.AddColorRequest;
 import com.tobeto.pair9.services.dtos.color.requests.UpdateColorRequest;
@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/colors")
 @AllArgsConstructor
-@PreAuthorize("hasRole('ADMIN')")
 @CrossOrigin
 public class ColorsController {
 
@@ -24,7 +23,7 @@ public class ColorsController {
 
     @GetMapping("/getAll")
     @PreAuthorize("hasAuthority('admin:read')")
-    public BaseResult<List<GetListColorResponse>> getAll(){
+    public BaseResponse<List<GetListColorResponse>> getAll(){
         return colorService.getAll();
     }
 
@@ -32,21 +31,21 @@ public class ColorsController {
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('admin:add')")
-    public BaseResult add(@RequestBody @Valid AddColorRequest request){
+    public BaseResponse add(@RequestBody @Valid AddColorRequest request){
         return colorService.add(request);
     }
 
 
     @PutMapping("/update")
     @PreAuthorize("hasAuthority('admin:update')")
-    public BaseResult update(@RequestBody @Valid UpdateColorRequest request){
+    public BaseResponse update(@RequestBody @Valid UpdateColorRequest request){
         return colorService.update(request);
     }
 
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasAuthority('admin:delete')")
-    public BaseResult delete(@PathVariable Integer id){
+    public BaseResponse delete(@PathVariable Integer id){
         return colorService.delete(id);
     }
 

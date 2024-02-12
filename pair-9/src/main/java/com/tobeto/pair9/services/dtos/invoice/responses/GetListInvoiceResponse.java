@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,9 +15,14 @@ public class GetListInvoiceResponse {
 
     private String invoiceNo;
 
+    private String cardNameSurname;
+
+    private String cardNumber;
+
+    private LocalDate expireDate;
+
+    private String cvv;
+
     private Float totalPrice;
 
-    private Float discountRate;
-
-    private Float taxRate;
 }

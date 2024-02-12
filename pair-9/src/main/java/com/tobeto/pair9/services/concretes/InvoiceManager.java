@@ -24,38 +24,38 @@ public class InvoiceManager implements InvoiceService {
     private final InvoiceBusinessRules invoiceBusinessRules;
 
     @Override
-    public BaseResult<List<GetListInvoiceResponse>> getAll() {
+    public BaseResponse<List<GetListInvoiceResponse>> getAll() {
         List<Invoice> invoices = invoiceRepository.findAll();
         var result = invoices.stream()
                 .map(invoice -> this.modelMapperService.forResponse()
                         .map(invoice,GetListInvoiceResponse.class)).toList();
-        return new BaseResult<>(true,result);
+        return new BaseResponse<>(true,result);
     }
 
     @Override
-    public BaseResult add(AddInvoiceRequest request) {
+    public BaseResponse add(AddInvoiceRequest request) {
         invoiceBusinessRules.isExistInvoiceByNumber(request.getInvoiceNo());
         invoiceBusinessRules.isExistRentalById(request.getRentalId());
         Invoice invoice = this.modelMapperService.forRequest().map(request, Invoice.class);
         invoice.setId(null);
         this.invoiceRepository.save(invoice);
-        return new BaseResult<>(true, Messages.invoiceAdded);
+        return new BaseResponse<>(true, Messages.invoiceAdded);
     }
 
     @Override
-    public BaseResult update(UpdateInvoiceRequest request) {
+    public BaseResponse update(UpdateInvoiceRequest request) {
         invoiceBusinessRules.isExistInvoiceById(request.getId());
         invoiceBusinessRules.isExistRentalById(request.getRentalId());
         Invoice invoice = this.modelMapperService.forRequest()
                 .map(request,Invoice.class);
         this.invoiceRepository.save(invoice);
-        return new BaseResult<>(true, Messages.invoiceUpdated);
+        return new BaseResponse<>(true, Messages.invoiceUpdated);
     }
 
     @Override
-    public BaseResult delete(Integer id) {
+    public BaseResponse delete(Integer id) {
         this.invoiceRepository.deleteById(id);
-        return new BaseResult<>(true, Messages.invoiceDeleted);
+        return new BaseResponse<>(true, Messages.invoiceDeleted);
     }
 
     @Override

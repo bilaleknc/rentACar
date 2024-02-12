@@ -25,23 +25,23 @@ public class CarManager implements CarService {
     private final CarBusinessRules carBusinessRules;
 
     @Override
-    public BaseResult<List<GetListCarResponse>> getAll() {
+    public BaseResponse<List<GetListCarResponse>> getAll() {
         List<Car> cars = carRepository.findAll();
         var result = cars.stream()
                 .map(car->this.modelMapperService.forResponse()
                         .map(car, GetListCarResponse.class)).collect(Collectors.toList());
-        return new BaseResult(true,result);
+        return new BaseResponse(true,result);
     }
 
     @Override
-    public BaseResult<GetByIdCarResponse> getById(Integer id) {
+    public BaseResponse<GetByIdCarResponse> getById(Integer id) {
         Car car = this.carRepository.findById(id).orElseThrow();
-         var result = this.modelMapperService.forResponse().map(car, GetByIdCarResponse.class);
-         return new BaseResult(false,result);
+        var result = this.modelMapperService.forResponse().map(car, GetByIdCarResponse.class);
+        return new BaseResponse(false,result);
     }
 
     @Override
-    public BaseResult add(AddCarRequest request) {
+    public BaseResponse add(AddCarRequest request) {
         carBusinessRules.isExistCarByPlate(request.getPlate());
         carBusinessRules.isExistModelById(request.getModelId());
         carBusinessRules.isExistColorById(request.getColorId());
@@ -49,18 +49,18 @@ public class CarManager implements CarService {
         Car car = this.modelMapperService.forRequest().map(request, Car.class);
         car.setId(null);
         this.carRepository.save(car);
-        return new BaseResult<>(true, Messages.carAdded);
+        return new BaseResponse<>(true, Messages.carAdded);
     }
 
     @Override
-    public BaseResult update(UpdateCarRequest request) {
+    public BaseResponse update(UpdateCarRequest request) {
         carBusinessRules.isExistCarById(request.getId());
         carBusinessRules.isExistModelById(request.getModelId());
         carBusinessRules.isExistColorById(request.getColorId());
         Car car = this.modelMapperService.forRequest()
                 .map(request,Car.class);
         this.carRepository.save(car);
-        return new BaseResult<>(true,Messages.carUpdated);
+        return new BaseResponse<>(true,Messages.carUpdated);
     }
 
     public boolean isExistById(Integer id) {
@@ -68,8 +68,8 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public BaseResult delete(Integer id) {
+    public BaseResponse delete(Integer id) {
         this.carRepository.deleteById(id);
-        return new BaseResult<>(true,Messages.carDeleted);
+        return new BaseResponse<>(true,Messages.carDeleted);
     }
 }

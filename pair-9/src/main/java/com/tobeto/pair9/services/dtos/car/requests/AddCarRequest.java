@@ -29,6 +29,26 @@ public class AddCarRequest {
     private double dailyPrice;
 
     @Positive
+    private Float depositPrice;
+
+    private short minFindeksRate;
+
+    private String transmissionType;
+
+    private String fuelType;
+
+    private boolean airbag;
+
+    private Integer drivingLicenceAge;
+
+    @Positive
+    private Integer minCustomerAge;
+
+    private Integer seatCapasity;
+
+    private String imagePath;
+
+    @Positive
     private Integer modelId;
 
     @Positive

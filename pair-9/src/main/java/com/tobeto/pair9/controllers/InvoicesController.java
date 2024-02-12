@@ -1,6 +1,6 @@
 package com.tobeto.pair9.controllers;
 
-import com.tobeto.pair9.core.utilities.results.BaseResult;
+import com.tobeto.pair9.core.utilities.results.BaseResponse;
 import com.tobeto.pair9.services.abstracts.InvoiceService;
 import com.tobeto.pair9.services.dtos.invoice.requests.AddInvoiceRequest;
 import com.tobeto.pair9.services.dtos.invoice.requests.UpdateInvoiceRequest;
@@ -23,7 +23,7 @@ public class InvoicesController {
 
     @GetMapping("/getAll")
     @PreAuthorize("hasAuthority('admin:read')")
-    public BaseResult<List<GetListInvoiceResponse>> getAll(){
+    public BaseResponse<List<GetListInvoiceResponse>> getAll(){
         return invoiceService.getAll();
     }
 
@@ -31,22 +31,22 @@ public class InvoicesController {
     @PostMapping("/add")
     @PreAuthorize("hasAuthority('admin:add')")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddInvoiceRequest request){
-        invoiceService.add(request);
+    public BaseResponse add(@RequestBody @Valid AddInvoiceRequest request){
+        return invoiceService.add(request);
     }
 
 
     @PutMapping("/update")
     @PreAuthorize("hasAuthority('admin:update')")
-    public void update(@RequestBody @Valid UpdateInvoiceRequest request){
-        this.invoiceService.update(request);
+    public BaseResponse update(@RequestBody @Valid UpdateInvoiceRequest request){
+       return this.invoiceService.update(request);
     }
 
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasAuthority('admin:delete')")
-    public void delete(@PathVariable Integer id){
-        invoiceService.delete(id);
+    public BaseResponse delete(@PathVariable Integer id){
+        return invoiceService.delete(id);
     }
 
 

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Builder
 @RequiredArgsConstructor
 @Data
-public class BaseResult<T>{
+public class BaseResponse <T>{
 
     @JsonProperty("isSuccess")
     private boolean success;
@@ -17,22 +17,22 @@ public class BaseResult<T>{
 
     private T data;
 
-    public BaseResult(boolean success){
+    public BaseResponse(boolean success){
         this.success = success;
     }
 
-    public BaseResult(boolean success, String message){
+    public BaseResponse(boolean success, String message){
         this(success);
         this.message = message;
     }
 
-    public BaseResult(boolean success, String message, T data) {
+    public BaseResponse(boolean success, String message, T data) {
         this.success = success;
         this.message = message;
         this.data = data;
     }
 
-    public BaseResult(boolean success, T data) {
+    public BaseResponse(boolean success, T data) {
         this.success = success;
         this.data = data;
     }
