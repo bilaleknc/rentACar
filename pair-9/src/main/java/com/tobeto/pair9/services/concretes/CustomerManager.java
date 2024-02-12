@@ -59,8 +59,8 @@ public class CustomerManager implements CustomerService {
         if(customerRepository.existsCustomerByIdentityNumber(identityNumber)){
             throw new RuntimeException("There cannot be two customer with the same identity number");
         }
-        if(!userService.existsId(userId)){
+/*        if(!userService.existsId(userId)){
             throw new RuntimeException("There is no user in the given id!");
-        }
+        }*/
     }
 }

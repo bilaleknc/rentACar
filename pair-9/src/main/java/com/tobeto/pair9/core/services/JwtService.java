@@ -1,5 +1,7 @@
 package com.tobeto.pair9.core.services;
 
+import com.tobeto.pair9.entities.concretes.User;
+import com.tobeto.pair9.services.abstracts.UserService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -23,9 +25,9 @@ public class JwtService {
     @Value("${jwt.expiration}")
     private long EXPIRATION;
 
-    public String generateToken(String userName) {
+    public String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userName);
+        return createToken(claims, user);
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
@@ -34,7 +36,12 @@ public class JwtService {
         return userDetails.getUsername().equals(username) && !expirationDate.before(new Date());
     }
 
-    private Date extractExpiration(String token) {
+    public Boolean validateToken(String token, String username) {
+        Date expirationDate = extractExpiration(token);
+        return username.equals(extractUser(token)) && !expirationDate.before(new Date());
+    }
+
+    public Date extractExpiration(String token) {
         Claims claims = Jwts
                 .parser()
                 .setSigningKey(getSigningKey())
@@ -53,15 +60,51 @@ public class JwtService {
         return claims.getSubject();
     }
 
-    private String createToken(Map<String, Object> claims, String userName) {
+    public String extractToken(String token) {
+        Claims claims = Jwts
+                .parser()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(userName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    public String createToken(Map<String, Object> claims, User user) {
+        return Jwts.builder()
+                .setClaims(claims)
+                .claim("id", user.getId())
+                .claim("role", user.getRole())
+                .setSubject(user.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public String generateRefreshToken(User user) {
+        Map<String, Object> claims = new HashMap<>();
+        return createRefreshToken(claims, user);
+    }
+
+
+    public String createRefreshToken(Map<String, Object> claims, User user) {
+        return Jwts.builder()
+                .setClaims(claims)
+                .claim("id", user.getId())
+                .claim("role", user.getRole())
+                .setSubject(user.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + (EXPIRATION * 10)))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
         return Keys.hmacShaKeyFor(keyBytes);

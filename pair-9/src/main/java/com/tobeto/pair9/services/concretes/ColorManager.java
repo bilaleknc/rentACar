@@ -47,7 +47,7 @@ public class ColorManager implements ColorService {
         }
         Color color = this.modelMapperService.forRequest().map(request,Color.class);
         this.colorRepository.save(color);
-        return new SuccessResult("Gncellendi");
+        return new SuccessResult("Güncellendi");
     }
 
     @Override
