@@ -4,7 +4,6 @@ import com.tobeto.pair9.core.filters.JwtAuthFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -38,7 +37,9 @@ public class SecurityConfiguration {
             "/v3/api-docs/**",
             "/api/users/**",
             "/api/auth/login",
+
             "**" // tüm endpointlere erişim izni verir
+
      };
 
     @Bean
@@ -47,13 +48,11 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(x -> x
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/**").permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/**").permitAll()
-/*
-                        .requestMatchers(HttpMethod.POST,"/api/cars/getAll").hasAnyAuthority("USER")
-*/
-                        .anyRequest().authenticated()
+
+                        //.requestMatchers(HttpMethod.GET, "/api/brands/**").permitAll()
+                        //.requestMatchers(HttpMethod.POST,"/api/cars/getAll").hasAnyAuthority("USER")
+                        //.anyRequest().authenticated()
+
                 )
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

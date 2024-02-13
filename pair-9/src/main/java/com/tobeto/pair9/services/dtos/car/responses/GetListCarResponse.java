@@ -33,7 +33,7 @@ public class GetListCarResponse {
 
     private boolean airbag;
 
-    private Integer drivingLicenceAge;
+    private Integer minDrivingLicenceAge;
 
     private Integer minCustomerAge;
 
