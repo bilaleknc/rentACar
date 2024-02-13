@@ -26,8 +26,8 @@ public class ModelBusinessRules {
     }
 
     public void isExistBrandById(Integer id){
-        if(!userService.isExistUserById(id)){
-            throw new ModelBusinessException(Messages.modelIsNotFound);
+        if(!modelRepository.existsBrandById(id)){
+            throw new ModelBusinessException(Messages.brandIsNotFound);
         }
     }
 }

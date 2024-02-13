@@ -34,7 +34,7 @@ public class RentalManager implements RentalService {
 
     @Override
     public BaseResponse add(AddRentalRequest request) {
-        rentalBusinessRules.isExistUserById(request.getUserId());
+        rentalBusinessRules.isExistUserByUserName(request.getUsername());
         rentalBusinessRules.isExistCarById(request.getCarId());
         rentalBusinessRules.calculateDiff(request.getStartDate(),request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
@@ -46,7 +46,7 @@ public class RentalManager implements RentalService {
     @Override
     public BaseResponse update(UpdateRentalRequest request) {
         rentalBusinessRules.isExistRentalById(request.getId());
-        rentalBusinessRules.isExistUserById(request.getUserId());
+        rentalBusinessRules.isExistUserByUserName(request.getUsername());
         rentalBusinessRules.isExistCarById(request.getCarId());
         rentalBusinessRules.calculateDiff(request.getStartDate(),request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);

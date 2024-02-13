@@ -38,9 +38,7 @@ public class SecurityConfiguration {
             "/v3/api-docs/**",
             "/api/users/**",
             "/api/auth/login",
-/*
             "**" // tüm endpointlere erişim izni verir
-*/
      };
 
     @Bean
@@ -49,8 +47,12 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(x -> x
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/brands/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/**").permitAll()
+/*
                         .requestMatchers(HttpMethod.POST,"/api/cars/getAll").hasAnyAuthority("USER")
+*/
                         .anyRequest().authenticated()
                 )
                 .httpBasic(AbstractHttpConfigurer::disable)

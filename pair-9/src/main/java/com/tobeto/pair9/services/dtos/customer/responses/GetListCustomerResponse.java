@@ -27,7 +27,7 @@ public class GetListCustomerResponse {
 
     private String email;
 
-    private LocalDate drivingLicenceDate;
+    private LocalDate drivingLicenseDate;
 
     private String postalCode;
 

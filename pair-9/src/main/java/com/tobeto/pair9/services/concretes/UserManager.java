@@ -1,5 +1,6 @@
 package com.tobeto.pair9.services.concretes;
 
+import com.tobeto.pair9.entities.concretes.User;
 import com.tobeto.pair9.repositories.UserRepository;
 import com.tobeto.pair9.services.abstracts.UserService;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,12 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public boolean isExistUserById(Integer id) {
-        return userRepository.existsById(id);
+    public boolean isExistUserByUserName(String userName) {
+        return userRepository.existsByUsername(userName);
+    }
+
+    @Override
+    public User getUser(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No user found"));
     }
 }

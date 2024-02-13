@@ -36,8 +36,11 @@ public class Customer extends BaseEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "driving_Lisence_date")
-    private LocalDate drivingLicenceDate;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "driving_License_date")
+    private LocalDate drivingLicenseDate;
 
     @Column(name = "postal_code")
     private String postalCode;

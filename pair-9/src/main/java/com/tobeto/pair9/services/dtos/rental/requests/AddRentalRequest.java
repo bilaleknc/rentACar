@@ -25,5 +25,5 @@ public class AddRentalRequest {
 
     private Integer carId;
 
-    private Integer userId;
+    private String username;
 }
