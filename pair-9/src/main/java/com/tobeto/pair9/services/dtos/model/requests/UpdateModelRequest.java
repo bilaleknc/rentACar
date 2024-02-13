@@ -11,6 +11,7 @@ import org.hibernate.validator.constraints.Length;
 @NoArgsConstructor
 
 public class UpdateModelRequest {
+
     @Positive(message = "Id must be greater than zero")
     private Integer id;
 

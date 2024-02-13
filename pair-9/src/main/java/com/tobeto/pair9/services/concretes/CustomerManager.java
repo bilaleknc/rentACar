@@ -39,7 +39,7 @@ public class CustomerManager implements CustomerService {
         customerBusinessRules.isExistUserByUserName(request.getUsername());
         Customer customer = this.modelMapperService.forRequest().map(request,Customer.class);
         customer.setId(null);
-        customer.setUser(UserService.getUser(request.getUsername()));
+        customer.setUser(UserService.getUserByUsername(request.getUsername()));
         this.customerRepository.save(customer);
         return new BaseResponse<>(true, Messages.customerAdded);
     }

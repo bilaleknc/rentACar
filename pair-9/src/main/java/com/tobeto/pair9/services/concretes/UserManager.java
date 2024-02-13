@@ -1,5 +1,6 @@
 package com.tobeto.pair9.services.concretes;
 
+import com.tobeto.pair9.core.utilities.results.Messages;
 import com.tobeto.pair9.entities.concretes.User;
 import com.tobeto.pair9.repositories.UserRepository;
 import com.tobeto.pair9.services.abstracts.UserService;
@@ -25,7 +26,8 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public User getUser(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("No user found"));
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(Messages.userIsNotFound));
     }
+
 }

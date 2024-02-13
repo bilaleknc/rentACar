@@ -22,7 +22,7 @@ public class BaseResponse <T>{
     }
 
     public BaseResponse(boolean success, String message){
-        this(success);
+        this.success = success;
         this.message = message;
     }
 
@@ -34,6 +34,12 @@ public class BaseResponse <T>{
 
     public BaseResponse(boolean success, T data) {
         this.success = success;
+        this.data = data;
+    }
+
+    public BaseResponse(boolean success, T data, String message) {
+        this.success = success;
+        this.message = message;
         this.data = data;
     }
 }
