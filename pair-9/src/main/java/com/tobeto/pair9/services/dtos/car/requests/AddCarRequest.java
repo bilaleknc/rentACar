@@ -39,7 +39,7 @@ public class AddCarRequest {
 
     private boolean airbag;
 
-    private Integer drivingLicenceAge;
+    private Integer minDrivingLicenceAge;
 
     @Positive
     private Integer minCustomerAge;

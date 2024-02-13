@@ -31,7 +31,7 @@ public class GetListCarResponse {
 
     private boolean airbag;
 
-    private Integer drivingLicenceAge;
+    private Integer minDrivingLicenceAge;
 
     private Integer minCustomerAge;
 
@@ -39,8 +39,8 @@ public class GetListCarResponse {
 
     private String imagePath;
 
-    private String  modelName;
+    private GetListModelResponse model;
 
-    private String colorName;
+    private GetListColorResponse color;
 
 }
