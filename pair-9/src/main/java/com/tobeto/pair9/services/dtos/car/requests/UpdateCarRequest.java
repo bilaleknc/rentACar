@@ -25,9 +25,7 @@ public class UpdateCarRequest {
     private short modelYear;
 
     @Positive(message = "Price must be greater than zero")
-    private Float dailyPrice;
-
-    private Float depositPrice;
+    private Float dailyPrice;;
 
     private short minFindeksRate;
 
@@ -37,11 +35,11 @@ public class UpdateCarRequest {
 
     private boolean airbag;
 
-    private Integer minDrivingLicenceAge;
+    private Integer drivingLicenceAge;
 
     private Integer minCustomerAge;
 
-    private Integer seatCapasity;
+    private Integer seatCapacity;
 
     private String imagePath;
 
