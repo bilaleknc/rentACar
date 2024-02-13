@@ -13,8 +13,6 @@ public class UpdateInvoiceRequest {
 
     private Integer id;
 
-    private String invoiceNo;
-
     private String cardNameSurname;
 
     private String cardNumber;

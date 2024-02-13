@@ -28,9 +28,6 @@ public class AddCarRequest {
     @Positive
     private double dailyPrice;
 
-    @Positive
-    private Float depositPrice;
-
     private short minFindeksRate;
 
     private String transmissionType;
@@ -39,12 +36,12 @@ public class AddCarRequest {
 
     private boolean airbag;
 
-    private Integer minDrivingLicenceAge;
+    private Integer drivingLicenceAge;
 
     @Positive
     private Integer minCustomerAge;
 
-    private Integer seatCapasity;
+    private Integer seatCapacity;
 
     private String imagePath;
 

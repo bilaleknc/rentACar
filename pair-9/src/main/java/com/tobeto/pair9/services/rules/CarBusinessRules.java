@@ -37,4 +37,8 @@ public class CarBusinessRules {
             throw new CarBusinessException(Messages.colorIsNotFound);
         }
     }
+
+    public double calculateDepositPrice(double dailyPrice){
+        return dailyPrice * 5;
+    }
 }

@@ -29,7 +29,7 @@ public class Car extends BaseEntity {
     private Float dailyPrice;
 
     @Column(name = "deposit_price")
-    private Float depositPrice;
+    private double depositPrice;
 
     @Column(name = "min_findeks_rate")
     private short minFindeksRate;
@@ -43,14 +43,14 @@ public class Car extends BaseEntity {
     @Column(name = "airbag")
     private boolean airbag;
 
-    @Column(name = "min_driving_licence_age")
-    private Integer minDrivingLicenceAge;
+    @Column(name = "driving_licence_age")
+    private int drivingLicenceAge;
 
     @Column(name = "min_customer_age")
     private Integer minCustomerAge;
 
-    @Column(name = "seat_capasity")
-    private int seatCapasity;
+    @Column(name = "seat_capacity")
+    private int seatCapacity;
 
     @Column(name = "image_path")
     private String imagePath;

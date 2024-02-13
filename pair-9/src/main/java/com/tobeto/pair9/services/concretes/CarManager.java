@@ -45,9 +45,9 @@ public class CarManager implements CarService {
         carBusinessRules.isExistCarByPlate(request.getPlate());
         carBusinessRules.isExistModelById(request.getModelId());
         carBusinessRules.isExistColorById(request.getColorId());
-
         Car car = this.modelMapperService.forRequest().map(request, Car.class);
         car.setId(null);
+        car.setDepositPrice(carBusinessRules.calculateDepositPrice(request.getDailyPrice()));
         this.carRepository.save(car);
         return new BaseResponse<>(true, Messages.carAdded);
     }
@@ -57,8 +57,10 @@ public class CarManager implements CarService {
         carBusinessRules.isExistCarById(request.getId());
         carBusinessRules.isExistModelById(request.getModelId());
         carBusinessRules.isExistColorById(request.getColorId());
+        double depositPrice =  carBusinessRules.calculateDepositPrice(request.getDailyPrice());
         Car car = this.modelMapperService.forRequest()
                 .map(request,Car.class);
+        car.setDepositPrice(carBusinessRules.calculateDepositPrice(request.getDailyPrice()));
         this.carRepository.save(car);
         return new BaseResponse<>(true,Messages.carUpdated);
     }
