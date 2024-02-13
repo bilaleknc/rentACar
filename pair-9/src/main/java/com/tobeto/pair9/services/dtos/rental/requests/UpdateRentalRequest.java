@@ -29,6 +29,6 @@ public class UpdateRentalRequest {
 
     private Integer carId;
 
-    private Integer userId;
+    private String username;
 
 }

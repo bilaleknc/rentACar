@@ -26,8 +26,8 @@ public class CustomerBusinessRules {
         }
     }
 
-    public void isExistUserById(Integer id){
-        if(!userService.isExistUserById(id)){
+    public void isExistUserByUserName(String userName){
+        if(!userService.isExistUserByUserName(userName)){
             throw new CustomerBusinessException(Messages.userIsNotFound);
         }
     }

@@ -25,9 +25,11 @@ public class AddCustomerRequest {
 
     private String email;
 
-    private LocalDate drivingLicenceDate;
+    private LocalDate drivingLicenseDate;
 
     private String postalCode;
 
-    private Integer userId;
+    private String phoneNumber;
+
+    private String username;
 }

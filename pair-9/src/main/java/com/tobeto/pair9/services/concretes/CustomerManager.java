@@ -6,6 +6,7 @@ import com.tobeto.pair9.core.utilities.results.Messages;
 import com.tobeto.pair9.entities.concretes.Customer;
 import com.tobeto.pair9.repositories.CustomerRepository;
 import com.tobeto.pair9.services.abstracts.CustomerService;
+import com.tobeto.pair9.services.abstracts.UserService;
 import com.tobeto.pair9.services.dtos.customer.requests.AddCustomerRequest;
 import com.tobeto.pair9.services.dtos.customer.requests.UpdateCustomerRequest;
 import com.tobeto.pair9.services.dtos.customer.responses.GetListCustomerResponse;
@@ -21,6 +22,7 @@ public class CustomerManager implements CustomerService {
     private final CustomerRepository customerRepository;
     private final ModelMapperService modelMapperService;
     private final CustomerBusinessRules customerBusinessRules;
+    private final UserService UserService;
 
     @Override
     public BaseResponse<List<GetListCustomerResponse>> getAll() {
@@ -34,9 +36,10 @@ public class CustomerManager implements CustomerService {
     @Override
     public BaseResponse add(AddCustomerRequest request) {
         customerBusinessRules.isExistCustomerByIdentityNumber(request.getIdentityNumber());
-        customerBusinessRules.isExistUserById(request.getUserId());
+        customerBusinessRules.isExistUserByUserName(request.getUsername());
         Customer customer = this.modelMapperService.forRequest().map(request,Customer.class);
         customer.setId(null);
+        customer.setUser(UserService.getUser(request.getUsername()));
         this.customerRepository.save(customer);
         return new BaseResponse<>(true, Messages.customerAdded);
     }
@@ -44,7 +47,7 @@ public class CustomerManager implements CustomerService {
     @Override
     public BaseResponse update(UpdateCustomerRequest request) {
         customerBusinessRules.isExistCustomerById(request.getId());
-        customerBusinessRules.isExistUserById(request.getUserId());
+        customerBusinessRules.isExistUserByUserName(request.getUsername());
         Customer customer = this.modelMapperService.forRequest()
                 .map(request,Customer.class);
         this.customerRepository.save(customer);

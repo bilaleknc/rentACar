@@ -27,9 +27,9 @@ public class UpdateCustomerRequest {
 
     private String email;
 
-    private LocalDate drivingLicenceDate;
+    private LocalDate drivingLicenseDate;
 
     private String postalCode;
 
-    private Integer userId;
+    private String username;
 }

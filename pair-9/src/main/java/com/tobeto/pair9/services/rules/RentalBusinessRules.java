@@ -31,8 +31,8 @@ public class RentalBusinessRules {
         }
     }
 
-    public void isExistUserById(Integer id){
-        if(!userService.isExistUserById(id)){
+    public void isExistUserByUserName(String userName){
+        if(!userService.isExistUserByUserName(userName)){
             throw new RentalBusinessException(Messages.userIsNotFound);
         }
     }

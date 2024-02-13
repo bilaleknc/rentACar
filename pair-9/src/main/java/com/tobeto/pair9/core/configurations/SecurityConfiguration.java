@@ -48,9 +48,11 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(x -> x
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
+
                         //.requestMatchers(HttpMethod.GET, "/api/brands/**").permitAll()
                         //.requestMatchers(HttpMethod.POST,"/api/cars/getAll").hasAnyAuthority("USER")
                         //.anyRequest().authenticated()
+
                 )
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
