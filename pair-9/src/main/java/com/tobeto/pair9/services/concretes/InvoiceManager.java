@@ -34,10 +34,10 @@ public class InvoiceManager implements InvoiceService {
 
     @Override
     public BaseResponse add(AddInvoiceRequest request) {
-        invoiceBusinessRules.isExistInvoiceByNumber(request.getInvoiceNo());
         invoiceBusinessRules.isExistRentalById(request.getRentalId());
         Invoice invoice = this.modelMapperService.forRequest().map(request, Invoice.class);
         invoice.setId(null);
+        invoice.setInvoiceNo(invoiceBusinessRules.isExistInvoiceByNumber());
         this.invoiceRepository.save(invoice);
         return new BaseResponse<>(true, Messages.invoiceAdded);
     }
@@ -48,6 +48,7 @@ public class InvoiceManager implements InvoiceService {
         invoiceBusinessRules.isExistRentalById(request.getRentalId());
         Invoice invoice = this.modelMapperService.forRequest()
                 .map(request,Invoice.class);
+        invoice.setInvoiceNo(invoiceBusinessRules.isExistInvoiceByNumber());
         this.invoiceRepository.save(invoice);
         return new BaseResponse<>(true, Messages.invoiceUpdated);
     }

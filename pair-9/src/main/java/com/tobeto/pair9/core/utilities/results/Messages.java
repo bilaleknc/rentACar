@@ -43,6 +43,7 @@ public class Messages {
     public static final String invoiceDeleted ="Invoice updated successfully";
     public static final String invoiceAlreadySaved = "Invoice already saved";
     public static final String invoiceIsNotFound = "Invoice is not found";
+    public static final String invoiceCardNumber = "Invalid card information";
 
     //Rental Messages
     public static final String rentalIsNotFound = "Rental is not found";

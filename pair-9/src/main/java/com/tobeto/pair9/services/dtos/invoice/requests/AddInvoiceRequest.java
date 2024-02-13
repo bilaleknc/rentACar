@@ -12,8 +12,6 @@ import java.time.LocalDate;
 
 public class AddInvoiceRequest {
 
-    private String invoiceNo;
-
     private String cardNameSurname;
 
     private String cardNumber;

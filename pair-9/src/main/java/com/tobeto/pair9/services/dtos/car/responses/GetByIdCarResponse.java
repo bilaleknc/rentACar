@@ -19,7 +19,7 @@ public class GetByIdCarResponse {
 
     private double dailyPrice;
 
-    private Float depositPrice;
+    private double depositPrice;
 
     private short minFindeksRate;
 
@@ -29,11 +29,11 @@ public class GetByIdCarResponse {
 
     private boolean airbag;
 
-    private Integer minDrivingLicenceAge;
+    private int drivingLicenceAge;
 
-    private Integer minCustomerAge;
+    private int minCustomerAge;
 
-    private Integer seatCapasity;
+    private int seatCapacity;
 
     private String imagePath;
 
