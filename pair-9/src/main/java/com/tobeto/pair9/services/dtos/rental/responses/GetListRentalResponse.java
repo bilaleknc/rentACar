@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class GetListRentalResponse {
 
-    private int id;
+    private Integer id;
 
     private LocalDate startDate;
 
@@ -23,7 +23,7 @@ public class GetListRentalResponse {
 
     private Long endKilometer;
 
-    private int carId;
+    private Integer carId;
 
-    private int userId;
+    private Integer userId;
 }

@@ -23,4 +23,5 @@ public class AddInvoiceRequest {
     private Float totalPrice;
 
     private Integer rentalId;
+
 }
