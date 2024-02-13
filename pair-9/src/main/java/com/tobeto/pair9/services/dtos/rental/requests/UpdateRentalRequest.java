@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class UpdateRentalRequest {
 
-    private int id;
+    private Integer id;
 
     @FutureOrPresent
     private LocalDate startDate;
@@ -27,8 +27,8 @@ public class UpdateRentalRequest {
     @Nullable
     private Long endKilometer;
 
-    private int carId;
+    private Integer carId;
 
-    private int userId;
+    private Integer userId;
 
 }

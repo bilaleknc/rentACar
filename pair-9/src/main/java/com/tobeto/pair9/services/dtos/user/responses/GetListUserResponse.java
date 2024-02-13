@@ -1,6 +1,6 @@
 package com.tobeto.pair9.services.dtos.user.responses;
 
-import jakarta.validation.constraints.NotNull;
+import com.tobeto.pair9.entities.concretes.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListUserResponse {
 
-    private int id;
+    private Integer id;
 
     private String email;
 
-    private String password;
+    private String username;
+
+    private Role role;
 }

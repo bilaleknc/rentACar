@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetByIdCarResponse {
 
-    private int  kilometer;
+    private Integer  kilometer;
 
     private String plate;
 
@@ -19,7 +19,21 @@ public class GetByIdCarResponse {
 
     private double dailyPrice;
 
+    private Float depositPrice;
+
     private short minFindeksRate;
+
+    private String transmissionType;
+
+    private String fuelType;
+
+    private boolean airbag;
+
+    private Integer drivingLicenceAge;
+
+    private Integer minCustomerAge;
+
+    private Integer seatCapasity;
 
     private String imagePath;
 

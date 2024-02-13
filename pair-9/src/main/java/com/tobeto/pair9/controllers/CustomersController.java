@@ -1,5 +1,6 @@
 package com.tobeto.pair9.controllers;
 
+import com.tobeto.pair9.core.utilities.results.BaseResponse;
 import com.tobeto.pair9.services.abstracts.CustomerService;
 import com.tobeto.pair9.services.dtos.customer.requests.AddCustomerRequest;
 import com.tobeto.pair9.services.dtos.customer.requests.UpdateCustomerRequest;
@@ -14,25 +15,33 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/customers")
+@CrossOrigin
 public class CustomersController {
 
     private CustomerService customerService;
 
     @GetMapping("/getAll")
-    public List<GetListCustomerResponse> getAll(){
+    public BaseResponse<List<GetListCustomerResponse>> getAll(){
         return customerService.getAll();
     }
+
+
     @PostMapping("/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody @Valid AddCustomerRequest request){
-        customerService.add(request);
+    public BaseResponse add(@RequestBody @Valid AddCustomerRequest request){
+        return customerService.add(request);
     }
+
+
     @PutMapping("/update")
-    public void update(@RequestBody @Valid UpdateCustomerRequest request){
-        this.customerService.update(request);
+    public BaseResponse update(@RequestBody @Valid UpdateCustomerRequest request){
+        return this.customerService.update(request);
     }
+
+
     @DeleteMapping("{id}")
-    public void delete(@PathVariable int id){
-        customerService.delete(id);
+    public BaseResponse delete(@PathVariable Integer id){
+        return customerService.delete(id);
     }
+
 }

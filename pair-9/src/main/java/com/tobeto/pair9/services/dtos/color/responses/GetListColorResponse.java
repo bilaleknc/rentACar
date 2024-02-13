@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 public class GetListColorResponse {
 
-    private int id;
+    private Integer id;
 
     private String code;
 
