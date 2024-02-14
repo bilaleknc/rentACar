@@ -43,8 +43,8 @@ public class Car extends BaseEntity {
     @Column(name = "airbag")
     private boolean airbag;
 
-    @Column(name = "driving_licence_age")
-    private int drivingLicenceAge;
+    @Column(name = "driving_license_age")
+    private int drivingLicenseAge;
 
     @Column(name = "min_customer_age")
     private Integer minCustomerAge;

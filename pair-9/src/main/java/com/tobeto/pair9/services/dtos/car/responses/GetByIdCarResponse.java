@@ -29,7 +29,7 @@ public class GetByIdCarResponse {
 
     private boolean airbag;
 
-    private int drivingLicenceAge;
+    private int drivingLicenseAge;
 
     private int minCustomerAge;
 

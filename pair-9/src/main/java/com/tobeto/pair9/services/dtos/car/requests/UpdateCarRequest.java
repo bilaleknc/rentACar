@@ -35,7 +35,7 @@ public class UpdateCarRequest {
 
     private boolean airbag;
 
-    private Integer drivingLicenceAge;
+    private Integer drivingLicenseAge;
 
     private Integer minCustomerAge;
 
