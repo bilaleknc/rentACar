@@ -1,6 +1,7 @@
 package com.tobeto.pair9.services.concretes;
 
 import com.tobeto.pair9.core.services.JwtService;
+import com.tobeto.pair9.core.utilities.results.Messages;
 import com.tobeto.pair9.entities.concretes.RefreshToken;
 import com.tobeto.pair9.entities.concretes.User;
 import com.tobeto.pair9.repositories.RefreshTokenRepository;
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,7 +64,7 @@ public class AuthManager implements AuthService {
     @Transactional
     public String refreshToken(String userName) {
 
-        User user = userRepository.findByUsername(userName).orElseThrow(()-> new RuntimeException("Kullanıcı bulunamadı"));
+        User user = userRepository.findByUsername(userName).orElseThrow(()-> new UsernameNotFoundException(Messages.userIsNotFound));
         Optional<RefreshToken> existingToken = tokenRepository.findByUser(user);
         if (existingToken.isEmpty()){
             throw new RuntimeException("Token bulunamadı");
@@ -80,7 +82,7 @@ public class AuthManager implements AuthService {
 
     @Transactional
     public void logout(String userName){
-        User user = userRepository.findByUsername(userName).orElseThrow(()-> new RuntimeException("Kullanıcı bulunamadı"));
+        User user = userRepository.findByUsername(userName).orElseThrow(()-> new UsernameNotFoundException(Messages.userIsNotFound));
         tokenRepository.deleteByUser(user);
     }
 
