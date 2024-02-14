@@ -8,6 +8,7 @@ import com.tobeto.pair9.repositories.RentalRepository;
 import com.tobeto.pair9.services.abstracts.RentalService;
 import com.tobeto.pair9.services.dtos.rental.requests.AddRentalRequest;
 import com.tobeto.pair9.services.dtos.rental.requests.UpdateRentalRequest;
+import com.tobeto.pair9.services.dtos.rental.responses.AddRentalResponse;
 import com.tobeto.pair9.services.dtos.rental.responses.GetListRentalResponse;
 import com.tobeto.pair9.services.rules.RentalBusinessRules;
 import lombok.AllArgsConstructor;
@@ -34,23 +35,24 @@ public class RentalManager implements RentalService {
 
     @Override
     public BaseResponse add(AddRentalRequest request) {
-        rentalBusinessRules.isExistUserByUserName(request.getUsername());
         rentalBusinessRules.isExistCarById(request.getCarId());
         rentalBusinessRules.calculateDiff(request.getStartDate(),request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         rental.setId(null);
+        rental.setUser(rentalBusinessRules.getUserByUsername(request.getUsername()));
         this.rentalRepository.save(rental);
-        return new BaseResponse<>(true, Messages.rentalAdded);
+        var result = this.modelMapperService.forResponse().map(rental,AddRentalResponse.class);
+        return new BaseResponse<>(true, result,Messages.rentalAdded);
     }
 
     @Override
     public BaseResponse update(UpdateRentalRequest request) {
         rentalBusinessRules.isExistRentalById(request.getId());
-        rentalBusinessRules.isExistUserByUserName(request.getUsername());
         rentalBusinessRules.isExistCarById(request.getCarId());
         rentalBusinessRules.calculateDiff(request.getStartDate(),request.getEndDate());
         Rental rental = this.modelMapperService.forRequest().map(request, Rental.class);
         rental.setId(null);
+        rental.setUser(rentalBusinessRules.getUserByUsername(request.getUsername()));
         this.rentalRepository.save(rental);
         return new BaseResponse<>(true, Messages.rentalUpdated);
     }

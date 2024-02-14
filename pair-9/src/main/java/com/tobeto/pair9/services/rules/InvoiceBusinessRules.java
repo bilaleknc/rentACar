@@ -49,48 +49,27 @@ public class InvoiceBusinessRules {
     public boolean checkCardInformation(String cardNo,LocalDate expireDate,String cvv){
         String newCardNum = cardNo.replaceAll("[\\s-,]", "");
 
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         String formattedDate = expireDate.format(formatter);
-        LocalDate inputDate = LocalDate.parse(formattedDate, formatter);
-        System.out.println(cardNo);
-        System.out.println(formattedDate);
-        System.out.println();
+        YearMonth yearMonth = YearMonth.parse(formattedDate, formatter);
+        LocalDate inputDate = yearMonth.atDay(1);
 
-        if(newCardNum.length() == 16){
-            throw new RuntimeException("card hatası");
-        }
-        if(inputDate.isAfter(LocalDate.now().withDayOfMonth(1))){
-            throw new RuntimeException("tarih hatası");
-        }
-        if (cvv.matches("\\d+")){
-            throw new RuntimeException("cvv hatası");
-        }
-
-        if(newCardNum.length() == 16 &&
+        if(!(newCardNum.length() == 16 &&
                 newCardNum.matches("\\d+") &&
                 inputDate.isAfter(LocalDate.now().withDayOfMonth(1)) &&
                 cvv.length() == 3 &&
-                cvv.matches("\\d+")){
+                cvv.matches("\\d+"))){
             throw new InvoiceBusinessException(Messages.invoiceCardNumber);
         }
-
-        String newCardNo = maskCardNo(cardNo);
-        String newCvv = maskCvv(cvv);
-
-        return newCardNo.length() == 16 &&
-                newCardNo.matches("\\d+") &&
-                inputDate.isAfter(LocalDate.now().withDayOfMonth(1)) &&
-                newCvv.length() == 3 &&
-                newCvv.matches("\\d+");
+        return true;
     }
 
-    private String maskCardNo(String cardNo){
+    public String maskCardNo(String cardNo){
        return cardNo.replaceAll("[\\s-,]", "")
                 .replaceAll("(?<=\\d{4})\\d(?=\\d{4})", "*");
     }
 
-    private String maskCvv(String cvv){
+    public String maskCvv(String cvv){
         return cvv.replaceAll("\\d(?=\\d{1})", "*");
     }
 }

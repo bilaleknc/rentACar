@@ -35,11 +35,15 @@ public class InvoiceManager implements InvoiceService {
     @Override
     public BaseResponse add(AddInvoiceRequest request) {
         invoiceBusinessRules.isExistRentalById(request.getRentalId());
+        invoiceBusinessRules.checkCardInformation(request.getCardNumber(),request.getExpireDate(),request.getCvv());
         Invoice invoice = this.modelMapperService.forRequest().map(request, Invoice.class);
         invoice.setId(null);
+        invoice.setCardNumber(invoiceBusinessRules.maskCardNo(request.getCardNumber()));
+        invoice.setCvv(invoiceBusinessRules.maskCvv(request.getCvv()));
         invoice.setInvoiceNo(invoiceBusinessRules.isExistInvoiceByNumber());
+
         this.invoiceRepository.save(invoice);
-        return new BaseResponse<>(true, Messages.invoiceAdded);
+        return new BaseResponse(true,Messages.invoiceAdded);
     }
 
     @Override

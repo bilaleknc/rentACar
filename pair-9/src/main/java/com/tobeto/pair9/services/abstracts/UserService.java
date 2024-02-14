@@ -8,6 +8,5 @@ public interface UserService extends UserDetailsService {
     boolean isExistUserByUserName(String userName);
 
     //  with username
-    User getUser(String username);
-
+    User getUserByUsername(String username);
 }
