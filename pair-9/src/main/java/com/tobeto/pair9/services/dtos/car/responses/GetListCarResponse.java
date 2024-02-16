@@ -11,15 +11,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetListCarResponse {
 
-    private Long kilometer;
+    private Integer id;
+
+    private Integer  kilometer;
 
     private String plate;
 
-    private short modelYear;
+    private int year;
 
-    private Float dailyPrice;
+    private double dailyPrice;
+
+    private double depositPrice;
 
     private short minFindeksRate;
+
+    private String transmissionType;
+
+    private String fuelType;
+
+    private boolean airbag;
+
+    private int drivingLicenseAge;
+
+    private int minCustomerAge;
+
+    private int seatCapacity;
 
     private String imagePath;
 

@@ -4,19 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class AddInvoiceRequest {
 
-    private String invoiceNo;
+    private String cardNameSurname;
+
+    private String cardNumber;
+
+    private LocalDate expireDate;
+
+    private String cvv;
 
     private Float totalPrice;
 
-    private Float discountRate;
+    private Integer rentalId;
 
-    private Float taxRate;
-
-    private int rentalId;
 }
