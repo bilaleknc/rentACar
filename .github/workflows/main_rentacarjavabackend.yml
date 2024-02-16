@@ -20,7 +20,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        working-directory: pair-9/  
+        working-directory: pair-9/  # Maven komutunu 'pair-9/' klasöründe çalıştır
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -56,4 +56,4 @@ jobs:
         with:
           app-name: 'rentACarJavaBackend'
           slot-name: 'Production'
-          package: '${{ github.workspace }}/pair-9/target/*.jar'
+          package: '*.jar'
